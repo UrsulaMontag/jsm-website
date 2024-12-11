@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# **Lütjen-Deile-39 | Steinhuder Meer Holiday Home**
 
-## Getting Started
+![Project Banner](https://your-domain.com/images/project-banner.jpg) <!-- Replace with a real image -->
 
-First, run the development server:
+## **Description**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Welcome to the repository for **Lütjen-Deile-39**, a modern and accessible holiday home website designed for a serene
+getaway at the beautiful Steinhuder Meer in Niedersachsen. This project is built using **Next.js**, **TypeScript**, *
+*Tailwind CSS**, and integrates CI/CD with **GitHub Actions** and code quality monitoring via **SonarCloud**. The site
+is hosted on **Vercel**.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **Features**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices (including landscape mode).
+- **Accessibility (a11y)**: Fully compliant with WCAG 2.1 standards.
+- **Internationalization (i18n)**: Supports English and German languages.
+- **Availability Calendar**: Integrated with Novasol's API for real-time booking information.
+- **Modern Stack**: Leveraging Next.js App Router, TypeScript, and Tailwind CSS for performance and developer
+  productivity.
+- **Automated CI/CD**: Deployments to Vercel triggered by GitHub Actions.
+- **Code Quality**: Monitored via SonarCloud for security, maintainability, and test coverage.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## **Table of Contents**
 
-To learn more about Next.js, take a look at the following resources:
+1. [Tech Stack](#tech-stack)
+2. [Getting Started](#getting-started)
+3. [Scripts](#scripts)
+4. [Contact](#contact)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## **Tech Stack**
 
-## Deploy on Vercel
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Hosting**: [Vercel](https://vercel.com/)
+- **API Integration**: Novasol API for booking calendar.
+- **Testing**:
+    - Unit Testing: [Jest](https://jestjs.io/)
+    - Integration Testing: [Cypress](https://www.cypress.io/)
+- **Code Quality**: [SonarCloud](https://sonarcloud.io/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## **Getting Started**
+
+### **Prerequisites**
+
+- **Node.js**: v18 or higher
+- **npm**: v8 or higher
+- **Vercel Account**: Required for deployment
+- **SonarCloud Account**: For code quality monitoring
+
+### **Installation**
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/<your-username>/Lutjen-Deile-39.git
+   cd Lutjen-Deile-39
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Start the development server:
+    ```bash
+    npm run dev
+    ```
+
+### **Scripts**
+
+| Script           | Description                            |
+|------------------|----------------------------------------|
+| npm run dev      | Starts the development server.         |
+| npm run build    | Builds the application for production. |                                |
+| npm run start    | Starts the production server.          |
+| npm run lint     | Lints the project using ESLint.        |
+| npm run test     | Runs unit tests using Jest.            |
+| npm run test:e2e | Runs integration tests using Cypress.  |
+
+### **Contact**
+
+For questions or support, feel free to reach out at:
+
+    Email: montagu666@gmail.com
