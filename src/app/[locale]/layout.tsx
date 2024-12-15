@@ -51,12 +51,12 @@ export const viewport = {
 };
 
 export default async function RootLayout({
-                                             children, params: {locale},
+                                             children, params,
                                          }: Readonly<{
     children: React.ReactNode; params: { locale: string }
 }>) {
-    const localeAwaited = await locale;
-    if (!routing.locales.includes(localeAwaited as any)) {
+    const {locale} = await params;
+    if (!routing.locales.includes(locale as any)) {
         notFound();
     }
 

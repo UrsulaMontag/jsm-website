@@ -6,11 +6,18 @@ export default function LanguageSwitcher() {
     const t = useTranslations("LanguageSwitcher");
     const locale = useLocale();
 
+    const isSupportedLocale = routing.locales.includes(locale as any);
+
     return (
-        <LocaleSwitcherSelect defaultValue={locale} label={t("label")}>
+        <LocaleSwitcherSelect defaultValue={locale} label={t("label", {default: "Sprache wechseln"})}>
+            {!isSupportedLocale && (
+                <option value={locale}>
+                    {locale}
+                </option>
+            )}
             {routing.locales.map((locale) => (
                 <option key={locale} value={locale}>
-                    {t('locale', {locale: locale})}
+                    {t(`locale.${locale}`, {default: locale === "de" ? "Deutsch" : locale})}
                 </option>
             ))}
         </LocaleSwitcherSelect>

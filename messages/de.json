@@ -1,5 +1,5 @@
 {
-  "Homepage": {
+  "HomePage": {
     "welcome": "Willkommen in der Lütjen-Deile-39",
     "description": "Das ist eine Beispiel Übersetzung."
   },
@@ -11,7 +11,10 @@
     "logo": "Lütjen-Deile-39"
   },
   "LanguageSwitcher": {
-    "label": "Sprache wechseln",
-    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
+    "label": "Change language",
+    "locale": {
+      "de": "🇩🇪 Deutsch",
+      "en": "🇺🇸 Englisch"
+    }
   }
 }
