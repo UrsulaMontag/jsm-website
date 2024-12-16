@@ -15,8 +15,8 @@ export default function Header() {
         setIsToggleOpen(!isToggleOpen);
     };
     return (
-        <header
-            className="bg-blue-500 w-full min-h-[7vh] p-2 flex items-center justify-between md:flex-row md:justify-between">
+        <header role="banner"
+                className="bg-blue-500 w-full min-h-[7vh] p-2 flex items-center justify-between md:flex-row md:justify-between">
             <div className="nav_logo px-3">
                 <Link href="/public" className="text-white text-lg font-semibold">
                     <h1>{t("logo")}</h1>
