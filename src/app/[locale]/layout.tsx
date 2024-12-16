@@ -5,6 +5,7 @@ import {Locale, routing} from "@/i18n/routing";
 import {notFound} from "next/navigation";
 import {getMessages} from "next-intl/server";
 import {NextIntlClientProvider} from "next-intl";
+import {ReactNode} from "react";
 
 const geistSans = localFont({
     src: "../fonts/GeistVF.woff",
@@ -50,11 +51,14 @@ export const viewport = {
     initialScale: 1,
 };
 
+type LayoutProps = {
+    children: ReactNode;
+    params: Promise<{ locale: string }>;
+};
+
 export default async function RootLayout({
                                              children, params,
-                                         }: Readonly<{
-    children: React.ReactNode; params: { locale: string }
-}>) {
+                                         }: LayoutProps) {
     const {locale} = await params;
     if (!routing.locales.includes(locale as Locale)) {
         notFound();
