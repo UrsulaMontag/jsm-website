@@ -1,0 +1,20 @@
+{
+  "HomePage": {
+    "welcome": "Welcome to Lütjen-Deile-39",
+    "description": "This is an example description."
+  },
+  "Header": {
+    "nav": {
+      "home": "Home",
+      "about": "About"
+    },
+    "logo": "Lütjen-Deile-39"
+  },
+  "LanguageSwitcher": {
+    "label": "Change language",
+    "locale": {
+      "de": "🇩🇪 German",
+      "en": "🇺🇸 English"
+    }
+  }
+}
