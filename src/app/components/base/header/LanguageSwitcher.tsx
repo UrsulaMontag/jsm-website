@@ -1,12 +1,12 @@
 import {useLocale, useTranslations} from "next-intl";
-import {routing} from "@/i18n/routing";
+import {Locale, routing} from "@/i18n/routing";
 import LocaleSwitcherSelect from "@/app/components/base/header/LocaleSwitcherSelect";
 
 export default function LanguageSwitcher() {
     const t = useTranslations("LanguageSwitcher");
     const locale = useLocale();
 
-    const isSupportedLocale = routing.locales.includes(locale as any);
+    const isSupportedLocale = routing.locales.includes(locale as Locale);
 
     return (
         <LocaleSwitcherSelect defaultValue={locale} label={t("label", {default: "Sprache wechseln"})}>

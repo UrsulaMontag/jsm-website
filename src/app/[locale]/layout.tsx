@@ -1,7 +1,7 @@
 import type {Metadata} from "next";
 import localFont from "next/font/local";
 import "../globals.css";
-import {routing} from "@/i18n/routing";
+import {Locale, routing} from "@/i18n/routing";
 import {notFound} from "next/navigation";
 import {getMessages} from "next-intl/server";
 import {NextIntlClientProvider} from "next-intl";
@@ -56,7 +56,7 @@ export default async function RootLayout({
     children: React.ReactNode; params: { locale: string }
 }>) {
     const {locale} = await params;
-    if (!routing.locales.includes(locale as any)) {
+    if (!routing.locales.includes(locale as Locale)) {
         notFound();
     }
 

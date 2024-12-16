@@ -4,7 +4,7 @@ import LanguageSwitcher from "@/app/components/base/header/LanguageSwitcher";
 import {routing} from "@/i18n/routing";
 import {NextIntlClientProvider} from "next-intl";
 import {ReactElement} from "react";
-import {Locale} from "@/i18n/models/translation";
+import {Locale} from "@/i18n/routing";
 
 const mockUsePathname = jest.fn();
 const mockUseRouter = jest.fn();
