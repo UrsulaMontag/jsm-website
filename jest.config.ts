@@ -92,16 +92,16 @@ const config: Config = {
     // ],
 
     // An array of file extensions your modules use
-    // moduleFileExtensions: [
-    //   "js",
-    //   "mjs",
-    //   "cjs",
-    //   "jsx",
-    //   "ts",
-    //   "tsx",
-    //   "json",
-    //   "node"
-    // ],
+    moduleFileExtensions: [
+        "js",
+        "mjs",
+        "cjs",
+        "jsx",
+        "ts",
+        "tsx",
+        "json",
+        "node"
+    ],
 
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
     moduleNameMapper: {
@@ -119,13 +119,8 @@ const config: Config = {
 
         // Handle module aliases
         '^@/components/(.*)$': '<rootDir>/components/$1',
+        '^@/app/(.*)$': '<rootDir>/src/app/$1',
 
-        // Handle @next/font
-        '@next/font/(.*)': `<rootDir>/__mocks__/nextFontMock.js`,
-        // Handle next/font
-        'next/font/(.*)': `<rootDir>/__mocks__/nextFontMock.js`,
-        // Disable server-only
-        'server-only': `<rootDir>/__mocks__/empty.js`,
     },
 
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
