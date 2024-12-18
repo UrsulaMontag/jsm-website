@@ -1,6 +1,6 @@
 import {render, screen, fireEvent} from "@testing-library/react";
 import "@testing-library/jest-dom";
-import LocaleSwitcherSelect from "../../../src/app/components/base/header/LocaleSwitcherSelect";
+import LocaleSwitcherSelect from "@/app/components/base/header/LocaleSwitcherSelect";
 import {useRouter, usePathname} from "@/i18n/routing";
 import {useParams} from "next/navigation";
 import {useTransition} from "react";
