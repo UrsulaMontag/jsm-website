@@ -1,7 +1,8 @@
 import type {Metadata} from "next";
 import localFont from "next/font/local";
 import "../globals.css";
-import {Locale, routing} from "@/i18n/routing";
+import {routing} from "@/i18n/routing";
+import {Locale} from "@/i18n/routing";
 import {notFound} from "next/navigation";
 import {NextIntlClientProvider} from "next-intl";
 import {ReactNode} from "react";
@@ -53,21 +54,22 @@ export const viewport = {
 
 type LayoutProps = {
     children: ReactNode;
-    params: { locale: string };
+    params: Promise<{ locale: Locale }>;
 };
 
 export default async function RootLayout({
                                              children, params,
                                          }: LayoutProps) {
-    const {locale, messages} = await getLayoutProps(params);
+    const resolvedParams = await params;
+    const {locale, messages} = await getLayoutProps(resolvedParams);
     if (!routing.locales.includes(locale as Locale)) {
         notFound();
     }
     if (!messages) {
-        notFound();  
+        notFound();
     }
     return (
-        <html lang={locale as Locale}>
+        <html lang={locale as string || 'de'}>
         <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
