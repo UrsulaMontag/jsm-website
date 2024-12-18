@@ -53,7 +53,7 @@ export const viewport = {
 
 type LayoutProps = {
     children: ReactNode;
-    params: Promise<{ locale: string }>;
+    params: { locale: string };
 };
 
 export default async function RootLayout({
@@ -63,8 +63,11 @@ export default async function RootLayout({
     if (!routing.locales.includes(locale as Locale)) {
         notFound();
     }
+    if (!messages) {
+        notFound();  
+    }
     return (
-        <html lang={locale}>
+        <html lang={locale as Locale}>
         <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
