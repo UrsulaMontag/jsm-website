@@ -105,7 +105,8 @@ const config: Config = {
 
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
     moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/src/$1',
+        '^@/(.*)$': '<rootDir>/src/$1', // Matches any import starting with @/
+        '^@/app/(.*)$': '<rootDir>/src/app/$1', // Matches imports starting with @/app/
         // Handle CSS imports (with CSS modules)
         // https://jestjs.io/docs/webpack#mocking-css-modules
         '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
@@ -119,7 +120,6 @@ const config: Config = {
 
         // Handle module aliases
         '^@/components/(.*)$': '<rootDir>/components/$1',
-        '^@/app/(.*)$': '<rootDir>/src/app/$1',
 
     },
 
