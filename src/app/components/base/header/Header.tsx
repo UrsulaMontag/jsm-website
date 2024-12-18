@@ -40,10 +40,17 @@ export default function Header() {
                 </li>
             </ul>
 
-            <FaBars
-                className="menuToggleBtn text-white text-3xl absolute right-5 top-4 md:hidden cursor-pointer"
+            <button
+                data-testid="menu-button"
+                aria-label="Toggle menu"
+                aria-expanded={isToggleOpen}
+                className="md:hidden"
                 onClick={handleToggleOpen}
-            />
+            >
+                <FaBars
+                    className="text-white text-3xl absolute right-5 top-4 cursor-pointer"
+                />
+            </button>
         </header>
     );
 }
