@@ -20,10 +20,15 @@ jobs:
         run: npm ci
       - name: Run Tests
         run: npm test -- --coverage
+      - name: Debug Coverage
+        run: |
+          echo "=== lcov.info ==="
+          cat coverage/lcov.info | grep "middleware.ts"
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v4
         with:
           projectBaseDir: .
         env:
+          SONAR_SCANNER_OPTS: "-X"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
