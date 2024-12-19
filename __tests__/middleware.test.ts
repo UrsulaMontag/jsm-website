@@ -1,13 +1,6 @@
 import {NextRequest, NextResponse} from 'next/server';
 import middleware from '@/middleware';
 
-jest.mock('next-intl/middleware', () => ({
-    createMiddleware: jest.fn().mockImplementation(() => {
-        return async () => {
-            return NextResponse.next();
-        };
-    }),
-}));
 
 jest.mock('@/middleware', () => ({
     __esModule: true,

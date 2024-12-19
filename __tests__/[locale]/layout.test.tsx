@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import {render, screen} from '@testing-library/react';
 import {notFound} from 'next/navigation';
+import '@/app/[locale]/layout';
 import MockServerRootLayout from "../../__mocks__/components/MockServerRootLayout";
 
 jest.mock('next/navigation', () => ({

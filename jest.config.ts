@@ -29,7 +29,8 @@ const config: Config = {
     collectCoverage: true,
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
-    collectCoverageFrom: ['**/*.{js,jsx,ts,tsx}',
+    collectCoverageFrom: [
+        '**/*.{js,jsx,ts,tsx}',
         '!**/*.d.ts',
         '!**/node_modules/**',
         '!<rootDir>/out/**',
@@ -50,12 +51,12 @@ const config: Config = {
     coverageProvider: "v8",
 
     // A list of reporter names that Jest uses when writing coverage reports
-    // coverageReporters: [
-    //   "json",
-    //   "text",
-    //   "lcov",
-    //   "clover"
-    // ],
+    coverageReporters: [
+        "json",
+        "text",
+        "lcov",
+        "clover"
+    ],
 
     // An object that configures minimum threshold enforcement for coverage results
     // coverageThreshold: undefined,
@@ -105,7 +106,7 @@ const config: Config = {
 
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
     moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/src/$1', // Matches any import starting with @/
+        '^@/(.*)$': '<rootDir>/src/$1',
         '^@/app/(.*)$': '<rootDir>/src/app/$1', // Matches imports starting with @/app/
         // Handle CSS imports (with CSS modules)
         // https://jestjs.io/docs/webpack#mocking-css-modules
