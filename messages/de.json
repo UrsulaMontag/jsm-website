@@ -1,7 +1,9 @@
 {
+  "title": "Ankerplatz Lütjendeile",
+  "subTitle": "Sauna, See und Stille – wo der Stress weicht.",
   "HomePage": {
-    "welcome": "Willkommen in der Lütjen-Deile-39",
-    "description": "Das ist eine Beispiel Übersetzung."
+    "welcome": "Willkommen am Ankerplatz Lütjendeile",
+    "description": "Ankerplatz Lütjendeile ist ein wahres Paradies für alle, die sich eine romantische Auszeit gönnen möchten.Am Ufer des Sees gelegen, mit eigenem Anlegesteg und einer Sauna für entspannende Stunden zu zweit, bietet dieser Ort alles, was das Herz begehrt, um den Alltag zu vergessen.Genießen Sie den Sonnenuntergang im privaten Rückzugsort, umgeben von atemberaubender Natur – und lassen Sie sich von der Ruhe und Zweisamkeit verzaubern. Hier können Sie sich nicht nur entspannen, sondern sich auch ganz neu entdecken. Ein Ort für Paare, die gemeinsam zur Ruhe kommen wollen."
   },
   "Header": {
     "nav": {
