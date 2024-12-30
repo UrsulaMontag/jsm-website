@@ -16,7 +16,7 @@ export default function Hero({heroImage}: Readonly<HeroProps>) {
                     src={heroImage.public_id}
                     width={heroImage.width}
                     height={heroImage.height}
-                    alt={heroImage.alt}
+                    alt="Hero image"
                     crop="fill"
                 />}
                 <div className="bg-black bg-opacity-50 h-full flex items-center justify-center">
