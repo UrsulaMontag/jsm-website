@@ -31,9 +31,7 @@ export default async function RootLayout({
 
     const resolvedParams = await params;
     const {locale, messages} = await getLayoutProps(resolvedParams);
-
-    console.log('Rendering RootLayout with locale:', locale);
-
+    
     return (
         <ThemeProvider>
             <html lang={locale as string || 'de'}>

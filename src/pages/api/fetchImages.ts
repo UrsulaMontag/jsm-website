@@ -30,8 +30,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             url: resource.url,
             alt: resource.alt || "Image description",
         }));
-
-        console.log("Cloudinary Result:", images[0]);
         res.status(200).json(images);
     } catch (error) {
         console.error(error);

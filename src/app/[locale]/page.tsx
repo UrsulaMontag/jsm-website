@@ -19,7 +19,7 @@ export default function Home() {
             setImages(data);
         };
 
-        fetchImages().then(r => console.log(r));
+        fetchImages().then(() => console.log("Images fetched"));
     }, [imagePrefix]);
 
     return (
