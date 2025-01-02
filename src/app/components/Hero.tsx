@@ -9,24 +9,27 @@ export default function Hero({heroImage}: Readonly<HeroProps>) {
     const t = useTranslations("HomePage");
 
     return (
-        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <main className="flex flex-col sm:gap-8 row-start-2 items-center sm:items-start">
             <section aria-labelledby="hero-heading"
-                     className="relative bg-cover bg-center h-[50vh] flex flex-col items-center justify-items-center min-h-screen p-8 pb-20  sm:p-20 font-[family-name:var(--font-geist-sans)]">
+                     className="relative bg-cover bg-centers flex flex-col items-center justify-items-center  p-3 sm:p-10 font-[family-name:var(--font-geist-sans)]">
                 {heroImage && <CldImage
                     src={heroImage.public_id}
                     width={heroImage.width}
                     height={heroImage.height}
                     alt="Hero image"
+                    className="rounded-lg object-cover"
+                    crop="fill"
+                    gravity="auto"
                 />}
-                <div className="bg-black bg-opacity-50 h-full flex items-center justify-center">
+                <div className="absolute top-12 sm:top-1/4 justify-center">
                     <h2 id="hero-heading" role="heading"
-                        className="text-white font-bold text-center">
+                        className="font-bold  text-1xl text-center sm:text-4xl text-dark-text bg-dark-bg bg-opacity-50 p-2 sm:p-4 rounded-lg">
                         {t('welcome')}
                     </h2>
                 </div>
             </section>
 
-            <section aria-labelledby="description-heading" className="py-12 px-6 text-center">
+            <section aria-labelledby="description-heading" className="py-6 sm:py-12 px-6 text-center">
                 <p id="description-heading" className="mb-6">{t('description')}</p>
             </section>
 

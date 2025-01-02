@@ -28,6 +28,7 @@ export {metadata, viewport};
 export default async function RootLayout({
                                              children, params,
                                          }: LayoutProps) {
+
     const resolvedParams = await params;
     const {locale, messages} = await getLayoutProps(resolvedParams);
 
@@ -37,12 +38,13 @@ export default async function RootLayout({
         <ThemeProvider>
             <html lang={locale as string || 'de'}>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased bg-light-bg bg-opacity-80 text-light-text max-w-screen-xl flex flex-col justify-center items-center mx-auto`}
-            >
+                className={
+                    `${geistSans.variable} ${geistMono.variable} antialiased bg-light-bg bg-opacity-80 text-light-text max-w-screen-xl flex flex-col justify-center items-center mx-auto`}>
             <ThemeWrapper>
                 <NextIntlClientProvider messages={messages || undefined}>
-                    <div data-testid="intl-provider">{children}</div>
-
+                    <div data-testid="intl-provider">
+                        {children}
+                    </div>
                 </NextIntlClientProvider>
             </ThemeWrapper>
             </body>
