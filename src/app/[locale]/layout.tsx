@@ -31,6 +31,8 @@ export default async function RootLayout({
     const resolvedParams = await params;
     const {locale, messages} = await getLayoutProps(resolvedParams);
 
+    console.log('Rendering RootLayout with locale:', locale);
+
     return (
         <ThemeProvider>
             <html lang={locale as string || 'de'}>
@@ -39,7 +41,8 @@ export default async function RootLayout({
             >
             <ThemeWrapper>
                 <NextIntlClientProvider messages={messages || undefined}>
-                    {children}
+                    <div data-testid="intl-provider">{children}</div>
+
                 </NextIntlClientProvider>
             </ThemeWrapper>
             </body>
