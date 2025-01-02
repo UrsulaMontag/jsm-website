@@ -16,7 +16,7 @@ export default function Header() {
     };
     return (
         <header role="banner"
-                className="bg-light-bg dark:bg w-full min-h-[7vh] p-2 sticky top-0 z-10 flex items-center justify-between">
+                className="bg-light-bg dark:bg-dark-bg w-full min-h-[7vh] p-2 sticky top-0 z-10 flex items-center justify-between">
             <div className="nav_logo pl-3">
                 <Link href="/" className="text-lg font-semibold">
                     <h1>{t("logo")}</h1>
