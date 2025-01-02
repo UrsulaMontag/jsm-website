@@ -1,5 +1,6 @@
 describe('Home Page', () => {
     beforeEach(() => {
+        cy.intercept('GET', '/api/fetchImages*').as("fetchImages");
         cy.visit('/');
     });
 
@@ -12,19 +13,16 @@ describe('Home Page', () => {
     });
 
     it('fetches and displays images', () => {
-        cy.intercept('GET', '/api/fetchImages*').as('fetchImages');
-        cy.wait('@fetchImages').then((interception) => {
-            if (interception.response) {
-                expect([200, 304]).to.include(interception.response.statusCode);
-            } else {
-                throw new Error('Response is undefined');
-            }
+        cy.wait('@fetchImages').then((interception: Cypress.RouteOptions) => {
+            expect(interception.response!.statusCode).to.be.oneOf([200, 304]);
         });
         cy.get('img').should('have.length.greaterThan', 0);
-    })
-
+    });
 
     it('has accessible hero section', () => {
         cy.get('section[aria-labelledby="hero-heading"]').should('exist');
     });
-})
+});
+
+const asModule = {};
+export default asModule;
