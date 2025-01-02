@@ -16,7 +16,7 @@ export default function Header() {
     };
     return (
         <header role="banner"
-                className="bg-light-bg w-screen min-h-[7vh] p-2 sticky top-0 z-10 flex items-center justify-between">
+                className=" w-full min-h-[7vh] p-2 sticky top-0 z-10 flex items-center justify-between">
             <div className="nav_logo px-3">
                 <Link href="/public" className=" text-lg font-semibold">
                     <h1>{t("logo")}</h1>
@@ -24,16 +24,16 @@ export default function Header() {
             </div>
             <LanguageSwitcher/>
             <ul
-                className={`list-none flex md:flex-row  text-white ${isToggleOpen ? "block" : "hidden"
+                className={`list-none  text-secondary-light ${isToggleOpen ? "block" : "hidden"
                 } md:block`}
             >
-                <li className="hover:bg-blue-400 p-2 rounded">
-                    <Link href="/public" className="text-white">
+                <li className="hover:bg-blue-400 p-2 rounded text-secondary-light dark:text-secondary-dark">
+                    <Link href="/public">
                         {t("nav.home")}
                     </Link>
                 </li>
-                <li className="hover:bg-blue-400 p-2 rounded">
-                    <Link href="/about" className="text-white">
+                <li className="hover:bg-blue-400 p-2 rounded text-secondary-light dark:text-secondary-dark">
+                    <Link href="/about" className="">
                         {t("nav.about")}
                     </Link>
                 </li>

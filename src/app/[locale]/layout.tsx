@@ -37,7 +37,7 @@ export default async function RootLayout({
         <ThemeProvider>
             <html lang={locale as string || 'de'}>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased bg-light-bg bg-opacity-80 text-light-text`}
+                className={`${geistSans.variable} ${geistMono.variable} antialiased bg-light-bg bg-opacity-80 text-light-text max-w-screen-xl flex flex-col justify-center items-center mx-auto`}
             >
             <ThemeWrapper>
                 <NextIntlClientProvider messages={messages || undefined}>
