@@ -20,8 +20,11 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run Tests
+      - name: Run Unit Tests
         run: npm test -- --coverage
+
+      - name: Run Cypress Tests
+        run: npm run cypress:run
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v4
