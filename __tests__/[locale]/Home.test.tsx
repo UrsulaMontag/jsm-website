@@ -69,7 +69,7 @@ describe('Home', () => {
         });
 
         await waitFor(() => {
-            const heroImage = screen.getByAltText('Hero Image');
+            const heroImage = screen.getByAltText('Hero image');
             expect(heroImage).toBeInTheDocument();
         });
     });
