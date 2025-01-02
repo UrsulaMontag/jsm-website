@@ -1,6 +1,6 @@
 import cloudinary from "@/lib/cloudinaryConfig";
-import { ImageType } from "@/types/cloudinary";
-import { NextApiRequest, NextApiResponse } from "next";
+import {ImageType} from "@/types/cloudinary";
+import {NextApiRequest, NextApiResponse} from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
@@ -11,7 +11,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             max_results: 30,
         });
 
-        const images: ImageType[] = result.resources.map((resource: any) => ({
+        const images: ImageType[] = result.resources.map((resource: {
+            asset_id: string;
+            public_id: string;
+            sizes: string;
+            width: number;
+            height: number;
+            folder: string;
+            url: string;
+            alt: string;
+        }) => ({
             asset_id: resource.asset_id,
             public_id: resource.public_id,
             sizes: resource.sizes,
@@ -19,7 +28,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             height: resource.height,
             folder: resource.folder,
             url: resource.url,
-            secure_url: resource.secure_url,
             alt: resource.alt || "Image description",
         }));
 
@@ -27,6 +35,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(200).json(images);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to' })
+        res.status(500).json({error: 'Failed to'})
     }
 }

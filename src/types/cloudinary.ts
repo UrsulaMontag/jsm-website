@@ -5,7 +5,6 @@ export type ImageType = {
     width: number;
     height: number;
     folder: string;
-    url: string; 
-    secure_url: string;
-    alt: string; 
+    url: string;
+    alt: string;
 }
