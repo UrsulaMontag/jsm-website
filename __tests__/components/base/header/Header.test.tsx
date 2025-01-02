@@ -28,7 +28,9 @@ describe('Header', () => {
         expect(screen.getByText('Home')).toBeInTheDocument();
         expect(screen.getByText('About')).toBeInTheDocument();
 
-        expect(screen.getByTestId('language-switcher')).toBeInTheDocument();
+        const languageSwitchers = screen.getAllByTestId('language-switcher');
+        expect(languageSwitchers[0]).toBeInTheDocument();
+        expect(languageSwitchers[1]).toBeInTheDocument();
     });
 
     it('toggles mobile menu when hamburger icon is clicked', () => {
@@ -51,7 +53,7 @@ describe('Header', () => {
     it('renders navigation links with correct hrefs', () => {
         render(<Header/>);
 
-        expect(screen.getByText('Home').closest('a')).toHaveAttribute('href', '/public');
+        expect(screen.getByText('Home').closest('a')).toHaveAttribute('href', '/');
         expect(screen.getByText('About').closest('a')).toHaveAttribute('href', '/about');
     });
 });

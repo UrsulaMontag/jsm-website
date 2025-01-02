@@ -25,7 +25,6 @@ export default function Header() {
 
             <div className="hidden sm:flex">
                 <LanguageSwitcher/>
-
             </div>
             <button
                 data-testid="menu-button"
