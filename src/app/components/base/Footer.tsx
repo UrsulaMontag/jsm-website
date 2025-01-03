@@ -11,22 +11,22 @@ export default function Footer() {
                 <nav aria-label="Footer navigation">
                     <ul className="flex flex-wrap justify-center space-x-4">
                         <li>
-                            <Link href="/public" className="hover:underline">
+                            <Link href="/" className="hover:underline">
                                 {t('nav.home')}
                             </Link>
                         </li>
                         <li>
-                            <Link href="/public" className="hover:underline">
+                            <Link href="/" className="hover:underline">
                                 {t('nav.about')}
                             </Link>
                         </li>
                         <li>
-                            <Link href="/public" className="hover:underline">
+                            <Link href="/" className="hover:underline">
                                 {t('nav.contact')}
                             </Link>
                         </li>
                         <li>
-                            <Link href="/public" className="hover:underline">
+                            <Link href="/" className="hover:underline">
                                 {t('nav.imprint')}
                             </Link>
                         </li>

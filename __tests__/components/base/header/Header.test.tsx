@@ -12,7 +12,6 @@ jest.mock('next-intl', () => ({
     }
 }));
 
-// Mock the LanguageSwitcher component
 jest.mock('@/app/components/base/header/LanguageSwitcher', () => {
     return function MockLanguageSwitcher() {
         return <div data-testid="language-switcher">Language Switcher</div>;
