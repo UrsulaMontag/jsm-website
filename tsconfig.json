@@ -37,14 +37,6 @@
       ]
     }
   },
-  "references": [
-    {
-      "path": "./src/tsconfig.json"
-    },
-    {
-      "path": "./cypress/tsconfig.json"
-    }
-  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
