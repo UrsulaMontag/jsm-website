@@ -12,6 +12,15 @@
     },
     "logo": "Ankerplatz Lütjen-Deile"
   },
+  "Footer": {
+    "nav": {
+      "home": "Startseite",
+      "about": "Über uns",
+      "contact": "Kontakt",
+      "imprint": "Impressum"
+    },
+    "copyright": "Ankerplatz Lütjen-Deile"
+  },
   "LanguageSwitcher": {
     "label": "Change language",
     "locale": {

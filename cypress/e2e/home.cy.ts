@@ -22,6 +22,11 @@ describe('Home Page', () => {
     it('has accessible hero section', () => {
         cy.get('section[aria-labelledby="hero-heading"]').should('exist');
     });
+
+    it('renders the footer', () => {
+        cy.get('footer').should('be.visible');
+    });
+
 });
 
 const asModule = {};

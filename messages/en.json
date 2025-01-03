@@ -12,6 +12,15 @@
     },
     "logo": "Anchor Point Lütjen-Deile"
   },
+  "Footer": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "contact": "Contact",
+      "imprint": "Imprint"
+    },
+    "copyright": "Anchor Point Lütjen-Deile"
+  },
   "LanguageSwitcher": {
     "label": "Change language",
     "locale": {
