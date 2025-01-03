@@ -20,6 +20,7 @@ export default function Hero({heroImage}: Readonly<HeroProps>) {
                     className="rounded-lg object-cover"
                     crop="fill"
                     gravity="auto"
+                    priority={true}
                 />}
                 <div className="absolute top-12 sm:top-1/4 justify-center">
                     <h2 id="hero-heading" role="heading"
