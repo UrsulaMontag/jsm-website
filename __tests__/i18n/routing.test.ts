@@ -9,9 +9,17 @@ describe('i18n routing configuration', () => {
 
         it('should have correct pathname mappings', () => {
             expect(routing.pathnames['/']).toBe('/');
-            expect(routing.pathnames['/pathnames']).toEqual({
-                en: '/pathnames',
-                de: '/pfadnamen'
+            expect(routing.pathnames['/about']).toEqual({
+                en: '/about',
+                de: '/ueberUns'
+            });
+            expect(routing.pathnames['/gallery']).toEqual({
+                en: '/gallery',
+                de: '/gallerie'
+            });
+            expect(routing.pathnames['/imprint']).toEqual({
+                en: '/imprint',
+                de: '/impressum'
             });
         });
     });
@@ -19,12 +27,16 @@ describe('i18n routing configuration', () => {
     describe('getPathname', () => {
         it('should return correct paths for default locale', () => {
             expect(getPathname({href: '/', locale: 'de'})).toBe('/de');
-            expect(getPathname({href: '/pathnames', locale: 'de'})).toBe('/de/pfadnamen');
+            expect(getPathname({href: '/about', locale: 'de'})).toBe('/de/ueberUns');
+            expect(getPathname({href: '/gallery', locale: 'de'})).toBe('/de/gallerie');
+            expect(getPathname({href: '/imprint', locale: 'de'})).toBe('/de/impressum');
         });
 
         it('should return correct paths for English locale', () => {
             expect(getPathname({href: '/', locale: 'en'})).toBe('/en');
-            expect(getPathname({href: '/pathnames', locale: 'en'})).toBe('/en/pathnames');
+            expect(getPathname({href: '/about', locale: 'en'})).toBe('/en/about');
+            expect(getPathname({href: '/gallery', locale: 'en'})).toBe('/en/gallery');
+            expect(getPathname({href: '/imprint', locale: 'en'})).toBe('/en/imprint');
         });
     });
 });

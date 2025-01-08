@@ -2,9 +2,9 @@
 
 import {useState} from "react";
 import {FaBars} from "react-icons/fa";
-import Link from "next/link";
 import LanguageSwitcher from "@/app/components/base/header/LanguageSwitcher";
 import {useTranslations} from "next-intl";
+import {Link} from "@/i18n/routing";
 
 
 export default function Header() {

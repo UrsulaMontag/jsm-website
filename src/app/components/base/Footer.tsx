@@ -1,5 +1,5 @@
 import {useTranslations} from 'next-intl';
-import Link from 'next/link';
+import {Link} from "@/i18n/routing";
 
 export default function Footer() {
     const t = useTranslations("Footer");
@@ -26,7 +26,7 @@ export default function Footer() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/" className="hover:underline">
+                            <Link href="/imprint" className="hover:underline">
                                 {t('nav.imprint')}
                             </Link>
                         </li>

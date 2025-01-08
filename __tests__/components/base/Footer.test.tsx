@@ -1,5 +1,8 @@
 import Footer from "@/app/components/base/Footer";
 import {render, screen} from "@testing-library/react";
+import {ReactNode} from "react";
+import {NextIntlClientProvider} from "next-intl";
+import enMessages from '@/../messages/en.json';
 
 jest.mock('next-intl', () => ({
     useTranslations: () => (key: string) => {
@@ -11,13 +14,34 @@ jest.mock('next-intl', () => ({
             'copyright': 'All rights reserved'
         };
         return translations[key] || key;
-    }
+    },
+    NextIntlClientProvider: ({children}: { children: ReactNode; }) => <>{children}</>
+
 }));
 
-describe('Footer', () => {
-    it('renders the footer with navigation links', () => {
-        render(<Footer/>);
+jest.mock('@/i18n/routing', () => {
+    const Link = ({children, href}: { children: ReactNode, href: string; }) => (
+        <a href={href}>{children}</a>
+    );
+    return {
+        Link,
+        usePathname: () => '/',
+        useRouter: () => ({}),
+        getPathname: () => '/',
+        redirect: jest.fn()
+    };
+});
 
+describe('Footer', () => {
+    const renderFooter = () => {
+        return render(
+            <NextIntlClientProvider locale="en" messages={enMessages}>
+                <Footer/>
+            </NextIntlClientProvider>
+        )
+    };
+    it('renders the footer with navigation links', () => {
+        renderFooter()
         expect(screen.getByText('Home')).toBeInTheDocument();
         expect(screen.getByText('About')).toBeInTheDocument();
         expect(screen.getByText('Contact')).toBeInTheDocument();
@@ -25,8 +49,7 @@ describe('Footer', () => {
     });
 
     it('renders the current year in the footer', () => {
-        render(<Footer/>);
-
+        renderFooter();
         const currentYear = new Date().getFullYear();
         const yearElements = screen.getAllByText((_content, element) => {
             return element?.textContent?.includes(currentYear.toString()) ?? false;
@@ -35,12 +58,11 @@ describe('Footer', () => {
     });
 
     it('renders navigation links with correct hrefs', () => {
-        render(<Footer/>);
-
+        renderFooter();
         expect(screen.getByText('Home').closest('a')).toHaveAttribute('href', '/');
         expect(screen.getByText('About').closest('a')).toHaveAttribute('href', '/');
         expect(screen.getByText('Contact').closest('a')).toHaveAttribute('href', '/');
-        expect(screen.getByText('Imprint').closest('a')).toHaveAttribute('href', '/');
+        expect(screen.getByText('Imprint').closest('a')).toHaveAttribute('href', '/imprint');
     });
-    
+
 });
