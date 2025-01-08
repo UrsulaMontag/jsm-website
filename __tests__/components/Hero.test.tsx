@@ -34,4 +34,14 @@ describe("Hero component", () => {
         renderWithIntl(<Hero heroImage={undefined}/>);
         expect(screen.queryByAltText('Hero image')).not.toBeInTheDocument();
     });
+
+    it('renders the welcome message', () => {
+        renderWithIntl(<Hero heroImage={mockImage}/>);
+        expect(screen.getByText('Welcome to Anchor Point Lütjen-Deile')).toBeInTheDocument();
+    });
+
+    it('renders cta-button to gallery', () => {
+        renderWithIntl(<Hero heroImage={mockImage}/>);
+        expect(screen.getByText('More views')).toBeInTheDocument();
+    });
 });

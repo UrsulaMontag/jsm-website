@@ -32,7 +32,8 @@ export default function Hero({heroImage}: Readonly<HeroProps>) {
 
                 </div>
                 <Link href="#"
-                      className="mt-6 inline-block bg-primary text-white text-lg sm:text-xl py-2 px-4 rounded-lg hover:bg-primary-dark">
+                      className="mt-6 inline-block bg-primary text-white text-lg sm:text-xl py-2 px-4 rounded-lg hover:bg-primary-dark"
+                      data-testid="cta-button">
                     {t('cta')}
                 </Link>
                 <p className="mt-4 text-lg sm:text-2xl text-light-text bg-dark-bg bg-opacity-50 p-2 rounded-lg">
