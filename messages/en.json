@@ -28,5 +28,14 @@
       "de": "🇩🇪 German",
       "en": "🇺🇸 English"
     }
+  },
+  "Imprint": {
+    "title": "Imprint",
+    "companyInfo": "Company information",
+    "companyName": "Anchor Point Lütjen-Deile",
+    "address": "Lütjen-Deile 39, xxx Deile",
+    "contact": "Contact",
+    "legalInfo": "Legal information",
+    "legalDetails": "Responsible for content according to § 55 Abs. 2 RStV: Anchor Point Lütjen-Deile"
   }
 }

@@ -1,4 +1,4 @@
-import "../globals.css";
+import "@/app/globals.css";
 import {Locale} from "@/i18n/routing";
 import {NextIntlClientProvider} from "next-intl";
 import {ReactNode} from "react";
@@ -6,6 +6,8 @@ import {getLayoutProps, metadata, viewport} from "./rootLayoutProps";
 import {ThemeProvider} from '../helper/ThemeProvider';
 import ThemeWrapper from '../helper/ThemeWrapper';
 import {roboto} from "../../../styles/fonts";
+import Header from "@/app/components/base/header/Header";
+import Footer from "@/app/components/base/Footer";
 
 type LayoutProps = {
     children: ReactNode;
@@ -26,11 +28,14 @@ export default async function RootLayout({
             <html lang={locale as string || 'de'}>
             <body
                 className={
-                    `${roboto.className} antialiased bg-light-bg bg-opacity-80 text-light-text max-w-screen-xl flex flex-col justify-center items-center mx-auto`}>
+                    `${roboto.className} antialiased min-h-screen flex flex-col bg-light-bg bg-opacity-80 text-light-text`
+                }>
             <ThemeWrapper>
                 <NextIntlClientProvider messages={messages || undefined}>
-                    <div data-testid="intl-provider">
+                    <div className="flex flex-col min-h-screen w-full" data-testid="intl-provider">
+                        <Header/>
                         {children}
+                        <Footer/>
                     </div>
                 </NextIntlClientProvider>
             </ThemeWrapper>

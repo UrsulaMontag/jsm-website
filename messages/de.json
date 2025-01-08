@@ -28,5 +28,14 @@
       "de": "🇩🇪 Deutsch",
       "en": "🇺🇸 Englisch"
     }
+  },
+  "Imprint": {
+    "title": "Impressum",
+    "companyInfo": "Firmeninformation",
+    "companyName": "Ankerplatz Lütjen-Deile",
+    "address": "Lütjen-Deile 39, xxx Deile",
+    "contact": "Kontakt",
+    "legalInfo": "Rechtliche Informationen",
+    "legalDetails": "Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV: Ankerplatz Lütjen-Deile"
   }
 }

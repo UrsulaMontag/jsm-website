@@ -45,20 +45,7 @@ const mockFetchResponse = {
 global.fetch = jest.fn(() => Promise.resolve(mockFetchResponse as Response));
 
 describe('Home', () => {
-
-    it('renders the header', async () => {
-        await act(async () => {
-            render(
-                <NextIntlClientProvider locale="en" messages={enMessages}>
-                    <Home/>
-                </NextIntlClientProvider>
-            );
-        });
-        await waitFor(() => {
-            const headerElement = screen.getByRole('banner');
-            expect(headerElement).toBeInTheDocument();
-        });
-    });
+    
     it('renders the hero image', async () => {
         await act(async () => {
             render(

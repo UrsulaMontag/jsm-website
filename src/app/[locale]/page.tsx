@@ -1,10 +1,8 @@
 'use client';
 
-import Header from "@/app/components/base/header/Header";
 import {useEffect, useState} from "react";
 import {ImageType} from "@/types/cloudinary";
 import Hero from '../components/Hero';
-import Footer from "@/app/components/base/Footer";
 
 
 export default function Home() {
@@ -25,9 +23,7 @@ export default function Home() {
 
     return (
         <>
-            <Header/>
             <Hero heroImage={heroImage}/>
-            <Footer/>
         </>
     );
 }
