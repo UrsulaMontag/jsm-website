@@ -1,64 +1,67 @@
 import '@testing-library/jest-dom';
-import {render, screen, act, waitFor} from '@testing-library/react';
+import {render, screen, act} from '@testing-library/react';
 import Home from '@/app/[locale]/page';
 import {NextIntlClientProvider} from 'next-intl';
-import enMessages from '@/../messages/en.json';
+import messages from '../../messages/en.json';
 
-jest.mock('next/navigation', () => ({
-    notFound: jest.fn(),
-    useRouter: jest.fn().mockImplementation(() => ({
-        route: '/',
-        pathname: '',
-        query: '',
-        asPath: '',
-    })),
-    usePathname: jest.fn().mockReturnValue('/'),
-    useParams: jest.fn().mockReturnValue({}),
-}));
-const mockFetchResponse = {
-    ok: true,
-    status: 200,
-    json: () => Promise.resolve([
-        {
-            public_id: 'Ferienhaus_Steinhude/lx0ismrhkehom7mkmdtv',
-            url: 'https://example.com/image.jpg',
-            width: 1920,
-            height: 1080,
-            alt: 'Hero Image'
-        },
-    ]),
-    headers: new Headers(),
-    redirected: false,
-    statusText: 'OK',
-    type: 'basic',
-    url: '',
-    clone: jest.fn(),
-    body: null,
-    bodyUsed: false,
-    arrayBuffer: jest.fn(),
-    blob: jest.fn(),
-    formData: jest.fn(),
-    text: jest.fn(),
-    bytes: jest.fn(),
+jest.mock('next-cloudinary');
+
+const mockImageData = {
+    asset_id: "test-id",
+    public_id: "Ferienhaus_Steinhude/lx0ismrhkehom7mkmdtv",
+    width: 1920,
+    height: 1080,
+    folder: "test-folder",
+    url: "https://test-url.com/image.jpg",
+    alt: "Test Image"
 };
 
-global.fetch = jest.fn(() => Promise.resolve(mockFetchResponse as Response));
+global.fetch = jest.fn(() =>
+    Promise.resolve({
+        json: () => Promise.resolve([mockImageData])
+    })
+) as jest.Mock;
 
 describe('Home', () => {
-    
-    it('renders the hero image', async () => {
+    beforeEach(() => {
+        process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME = 'test_cloud_name';
+        process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME = 'test_preset';
+        (global.fetch as jest.Mock).mockClear();
+    });
+
+    it('renders the welcome message and fetches images', async () => {
         await act(async () => {
             render(
-                <NextIntlClientProvider locale="en" messages={enMessages}>
+                <NextIntlClientProvider locale="en" messages={messages}>
                     <Home/>
                 </NextIntlClientProvider>
             );
         });
 
-        await waitFor(() => {
-            const heroImage = screen.getByAltText('Hero image');
-            expect(heroImage).toBeInTheDocument();
-        });
+        const welcomeMessage = screen.getByRole('heading', {name: /Welcome to Anchor Point Lütjen-Deile/i});
+        expect(welcomeMessage).toBeInTheDocument();
+
+        expect(global.fetch).toHaveBeenCalledWith('api/fetchImages?tag=test_preset');
+
+        const heroImage = await screen.findByTestId('cld-image');
+        expect(heroImage).toBeInTheDocument();
+        expect(heroImage).toHaveAttribute('src', mockImageData.public_id);
     });
 
+    it('renders the hero section with CTA button', async () => {
+        await act(async () => {
+            render(
+                <NextIntlClientProvider locale="en" messages={messages}>
+                    <Home/>
+                </NextIntlClientProvider>
+            );
+        });
+
+        const heroSection = screen.getByRole('main');
+        expect(heroSection).toBeInTheDocument();
+
+        const ctaButton = screen.getByTestId('cta-button');
+        expect(ctaButton).toBeInTheDocument();
+        expect(ctaButton).toHaveTextContent(/More views/i);
+    });
 });
