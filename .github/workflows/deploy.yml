@@ -38,3 +38,29 @@ jobs:
           NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
           CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
           CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+
+      - name: Wait for deployment
+        run: sleep 30
+
+      - name: Run Production Cypress Tests
+        if: success()
+        env:
+          CYPRESS_BASE_URL: ${{ steps.deploy.outputs.preview-url }} # Use the Vercel deployment URL
+          NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+        run: npm run cypress:run:ci
+
+      - name: Upload Production Cypress Screenshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: prod-cypress-screenshots
+          path: cypress/screenshots
+
+      - name: Upload Production Cypress Videos
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: prod-cypress-videos
+          path: cypress/videos
