@@ -29,7 +29,10 @@ jobs:
           NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
           CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
           CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
-        run: npm run cypress:run
+        run: |
+          npm run build
+          npm run cypress:run
+
       - name: Upload Cypress Screenshots
         uses: actions/upload-artifact@v3
         if: failure()
