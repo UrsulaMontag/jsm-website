@@ -5,7 +5,7 @@ export default defineConfig({
         // eslint-disable-next-line
         setupNodeEvents(_on: any, _config: any) {
         },
-        baseUrl: 'http://localhost:3000',
+        baseUrl: process.env.CYPRESS_BASE_URL || 'http://localhost:3000',
     },
     env: {
         CYPRESS_DISABLE_GPU: true,
