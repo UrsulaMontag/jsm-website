@@ -13,6 +13,7 @@
     "cypress:run": "cypress run"
   },
   "dependencies": {
+    "@next/env": "^15.1.4",
     "cloudinary": "^2.5.1",
     "next": "15.1.4",
     "next-cloudinary": "^6.16.0",
