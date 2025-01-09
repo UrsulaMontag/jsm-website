@@ -10,8 +10,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "cypress:open": "cypress open",
-    "cypress:run": "node scripts/cypress.ts",
-    "cypress:run:ci": "CYPRESS_BASE_URL=$DEPLOYMENT_URL node scripts/cypress.ts"
+    "cypress:run": "node cypress/cypress.ts",
+    "cypress:run:ci": "CYPRESS_BASE_URL=$DEPLOYMENT_URL node cypress/cypress.ts"
   },
   "dependencies": {
     "@next/env": "^15.1.4",
