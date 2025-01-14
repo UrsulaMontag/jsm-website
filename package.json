@@ -17,6 +17,7 @@
     "@next/env": "^15.1.4",
     "cloudinary": "^2.5.1",
     "leaflet": "^1.9.4",
+    "leaflet-defaulticon-compatibility": "^0.1.2",
     "next": "15.1.4",
     "next-cloudinary": "^6.16.0",
     "next-intl": "^3.26.1",
