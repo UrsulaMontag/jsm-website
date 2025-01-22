@@ -11,6 +11,34 @@
       "title": "Entdecken Sie Panoramablick",
       "description": "Erleben Sie Ruhe, Privatsphäre und Luxus im Ferienhaus Panoramablick, mit Annehmlichkeiten wie einem privaten Steg, einer Sauna und einem abgeschiedenen Garten.",
       "cta": "Das Haus erkunden"
+    },
+    "highlights": {
+      "title": "Warum Panoramablick?",
+      "description": "Entdecken Sie die einzigartigen Merkmale, die Ihren Aufenthalt im Panoramablick unvergesslich machen – Luxus, Privatsphäre und atemberaubende Ausblicke.",
+      "jetty": {
+        "title": "Privater Steg & Ruderboot",
+        "description": "Genießen Sie Zugang zum See direkt von Ihrem privaten Steg aus und ruhige Momente auf dem Wasser."
+      },
+      "garden": {
+        "title": "Abgeschiedener Garten",
+        "description": "Entspannen Sie in einem üppigen Garten, der Privatsphäre und Ruhe bietet – perfekt zum Abschalten."
+      },
+      "sauna": {
+        "title": "Luxus Sauna",
+        "description": "Erholen Sie sich in Ihrer privaten Sauna – ein exklusives Wellnesserlebnis."
+      },
+      "parking": {
+        "title": "Diskretes Parken",
+        "description": "Parken Sie sicher und privat auf dem Grundstück."
+      },
+      "sunsets": {
+        "title": "Panoramafenster & Steg für Sonnenuntergänge",
+        "description": "Genießen Sie atemberaubende Sonnenuntergänge durch Panoramafenster oder vom exklusiven Steg."
+      },
+      "pets": {
+        "title": "Hunde Willkommen",
+        "description": "Bringen Sie Ihre vierbeinigen Freunde für einen unvergesslichen Aufenthalt mit."
+      }
     }
   },
   "Header": {

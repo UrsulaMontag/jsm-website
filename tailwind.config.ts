@@ -6,6 +6,10 @@ export default {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                'hero': ['"Great Vibes"', 'cursive'],
+                'body': ['Roboto', 'sans-serif'],
+            },
             colors: {
                 "sunset-orange": "#ff914d",
                 "sunset-orange-dark": "#e67840",
@@ -25,23 +29,3 @@ export default {
     darkMode: 'class',
     plugins: [],
 } satisfies Config;
-
-/*extend: {
-      colors: {
-        // Primary Palette
-        'lake-blue': '#264653',
-        'sunset-orange': '#F4A261',
-        'amber-glow': '#E76F51',
-        'sky-blue': '#A8DADC',
-        'dusky-purple': '#6C567B',
-
-        // Neutral & Supporting Palette
-        'wood-brown': '#8B6A4D',
-        'sand-beige': '#D9CBA8',
-        'meadow-green': '#52734D',
-
-        // Accent Colors
-        'sunset-pink': '#FF847C',
-        'shadow-black': '#1C1C1C',
-      },
-    },*/

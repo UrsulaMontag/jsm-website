@@ -5,6 +5,7 @@ import {ImageType} from "@/types/cloudinary";
 import Hero from '../components/home/Hero';
 import Head from "next/head";
 import AboutHouse from "@/app/components/home/AboutHouse";
+import Highlights from "@/app/components/home/Highlights";
 
 
 export default function Home() {
@@ -45,6 +46,7 @@ export default function Home() {
             </Head>
             <Hero heroImage={heroImage}/>
             <AboutHouse images={houseImages}/>
+            <Highlights/>
         </>
     );
 }

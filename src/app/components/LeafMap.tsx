@@ -15,8 +15,8 @@ const defaults = {
     zoom: 19,
 };
 
-function LeafMap(Map: Readonly<MapProps>) {
-    const {zoom = defaults.zoom, posix} = Map;
+function LeafMap(LeafMap: Readonly<MapProps>) {
+    const {zoom = defaults.zoom, posix} = LeafMap;
 
     return (
         <MapContainer
