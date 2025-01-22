@@ -41,7 +41,7 @@ export default function Hero({heroImage}: Readonly<HeroProps>) {
                 {/* Call-to-Action Button */}
                 <Link data-testid="cta-button"
                       href="https://www.novasol.de/ferienhaeuser/wunstorf-steinhuder-meer-dns281"
-                      className="mt-8 inline-block bg-sunset-orange text-white text-lg font-medium py-3 px-6 rounded-lg shadow-lg border border-sunset-orange-dark transition-all hover:shadow-sm hover:translate-y-[2px] active:shadow-inner active:translate-y-[4px] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-dark-highlight"
+                      className="mt-8 inline-block bg-sunset-orange hover:bg-sunset-orange-dark text-white text-lg py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"
                 >
                     {t('hero.cta')}
                 </Link>

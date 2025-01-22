@@ -1,16 +1,44 @@
 {
   "HomePage": {
     "hero": {
-      "title": "Vacation Home Panoramic View Steinhuder Meer",
+      "title": "Vacation Home Panoramablick Steinhuder Meer",
       "subtitle": "Sauna, lake, and silence – where stress melts away.",
-      "welcome": "Welcome to Vacation house Panoramic View",
-      "description": "Vacation house Panoramic View is a true paradise for those who want to treat themselves to a romantic getaway. Situated on the shores of the lake, with its own jetty and sauna for relaxing hours for two, this place offers everything your heart desires to forget about everyday life, enjoy the sunset in a private retreat surrounded by breathtaking nature - and let yourself be enchanted by the peace and togetherness. Here you can not only relax, but also rediscover yourself. A place for couples who want to rest together.",
+      "welcome": "Welcome to Vacation house Panoramablick",
+      "description": "Vacation house Panoramablick is a true paradise for those who want to treat themselves to a romantic getaway. Situated on the shores of the lake, with its own jetty and sauna for relaxing hours for two, this place offers everything your heart desires to forget about everyday life, enjoy the sunset in a private retreat surrounded by breathtaking nature - and let yourself be enchanted by the peace and togetherness. Here you can not only relax, but also rediscover yourself. A place for couples who want to rest together.",
       "cta": "More views"
     },
     "about": {
       "title": "Discover Panoramablick",
       "description": "Experience peace, privacy, and luxury at Ferienhaus Panoramablick, with amenities like a private jetty, sauna, and secluded garden.",
       "cta": "Explore the House"
+    },
+    "highlights": {
+      "title": "Why Stay at Panoramablick?",
+      "description": "Discover the unique features that make your stay at Panoramablick unforgettable, combining luxury, privacy, and breathtaking views.",
+      "jetty": {
+        "title": "Private Jetty & Rowing Boat",
+        "description": "Enjoy access to the lake directly from your private jetty and peaceful moments on the water."
+      },
+      "garden": {
+        "title": "Secluded Garden",
+        "description": "Relax in a lush garden that offers privacy and tranquility, perfect for unwinding."
+      },
+      "sauna": {
+        "title": "Luxury Sauna",
+        "description": "Rejuvenate in your private sauna, an exclusive wellness experience."
+      },
+      "parking": {
+        "title": "Discreet Parking",
+        "description": "Park safely and privately on the property."
+      },
+      "sunsets": {
+        "title": "Panoramic Views & Sunset Jetty",
+        "description": "Bask in breathtaking sunsets from panoramic windows or the exclusive jetty."
+      },
+      "pets": {
+        "title": "Dogs Allowed",
+        "description": "Bring your furry companions for an unforgettable stay."
+      }
     }
   },
   "Header": {
@@ -21,7 +49,7 @@
       "activities": "Activities",
       "contact": "Contact"
     },
-    "logo": "Vacation house Panoramic View"
+    "logo": "Vacation house Panoramablick"
   },
   "Footer": {
     "nav": {
@@ -47,14 +75,5 @@
       "de": "🇩🇪 German",
       "en": "🇺🇸 English"
     }
-  },
-  "Imprint": {
-    "title": "Imprint",
-    "companyInfo": "Company information",
-    "companyName": "Vacation house Panoramic View",
-    "address": "Lütjen-Deile 39, xxx Deile",
-    "contact": "Contact",
-    "legalInfo": "Legal information",
-    "legalDetails": "Responsible for content according to § 55 Abs. 2 RStV: Vacation house Panoramic View"
   }
 }

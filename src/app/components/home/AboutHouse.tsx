@@ -34,7 +34,7 @@ export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
 
                         <Link
                             href="/gallery"
-                            className="inline-block bg-sunset-orange text-white text-lg font-medium py-3 px-6 rounded-lg shadow-lg border border-sunset-orange-dark transition-all hover:shadow-sm hover:translate-y-[2px] active:shadow-inner active:translate-y-[4px] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-dark-highlight"
+                            className="inline-block bg-sunset-orange hover:bg-sunset-orange-dark text-white text-lg py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"
                         >
                             {t('about.cta')}
                         </Link>
@@ -45,7 +45,7 @@ export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
                         {images.map((image, index) => (
                             <div
                                 key={image.public_id}
-                                className={`relative overflow-hidden rounded-lg transform transition-transform hover:scale-105`}
+                                className={`relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform transition-transform hover:scale-110`}
                                 style={{
                                     gridRow: index % 3 === 0 ? 'span 2' : 'span 1', // Dynamic height for a masonry feel
                                 }}

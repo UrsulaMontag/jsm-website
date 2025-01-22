@@ -32,7 +32,8 @@ export default async function RootLayout({
                 }>
             <ThemeWrapper>
                 <NextIntlClientProvider messages={messages || undefined}>
-                    <div className="flex flex-col min-h-screen w-full" data-testid="intl-provider">
+                    <div className="flex flex-col gap-y-8 lg:gap-10 min-h-screen w-full"
+                         data-testid="intl-provider">
                         <Header/>
                         {children}
                         <Footer/>
