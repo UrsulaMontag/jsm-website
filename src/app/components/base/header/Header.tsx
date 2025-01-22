@@ -5,7 +5,7 @@ import {FaBars} from "react-icons/fa";
 import LanguageSwitcher from "@/app/components/base/header/LanguageSwitcher";
 import {useTranslations} from "next-intl";
 import {Link} from "@/i18n/routing";
-import {body} from "@/../../styles/fonts";
+import {body} from "../../../../../styles/fonts";
 
 
 export default function Header() {

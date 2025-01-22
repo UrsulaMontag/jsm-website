@@ -3,29 +3,39 @@ import {render, screen} from '@testing-library/react';
 import AboutHouse from '@/app/components/home/AboutHouse';
 import {NextIntlClientProvider} from 'next-intl';
 import messages from '../../../messages/en.json';
+import {ImageType} from "@/types/cloudinary";
 
 jest.mock('next-cloudinary');
-const mockImages = [
+const mockImages: ImageType[] = [
     {
         public_id: "Ferienhaus_Steinhude/aboutHouse1",
         width: 800,
         height: 600,
         url: "https://test-url.com/image1.jpg",
-        alt: "Test Image 1"
+        alt: "Test Image 1",
+        asset_id: '',
+        sizes: '',
+        folder: ''
     },
     {
         public_id: "Ferienhaus_Steinhude/aboutHouse2",
         width: 800,
         height: 600,
         url: "https://test-url.com/image2.jpg",
-        alt: "Test Image 2"
+        alt: "Test Image 2",
+        asset_id: '',
+        sizes: '',
+        folder: ''
     },
     {
         public_id: "Ferienhaus_Steinhude/aboutHouse3",
         width: 800,
         height: 600,
         url: "https://test-url.com/image3.jpg",
-        alt: "Test Image 3"
+        alt: "Test Image 3",
+        asset_id: '',
+        sizes: '',
+        folder: ''
     }
 ];
 
@@ -46,7 +56,7 @@ describe('AboutHouse', () => {
         const description = screen.getByLabelText(/Experience peace, privacy, and luxury at Ferienhaus Panoramablick, with amenities like a private jetty, sauna, and secluded garden./i);
         expect(description).toBeInTheDocument();
 
-        const images = screen.getAllByRole('img', {name: /View of the house or surroundings at Panoramablick/i});
+        const images = screen.getAllByRole('img', {name: /Panoramablick house view/i});
         expect(images).toHaveLength(mockImages.length);
 
         const ctaButton = screen.getByRole('link', {name: /Explore the house gallery/i});

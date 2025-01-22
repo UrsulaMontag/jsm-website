@@ -90,7 +90,7 @@ describe('Home', () => {
         const description = screen.getByLabelText(/Experience peace, privacy, and luxury at Ferienhaus Panoramablick, with amenities like a private jetty, sauna, and secluded garden./i);
         expect(description).toBeInTheDocument();
 
-        const images = screen.getAllByRole('img', {name: /View of the house or surroundings at Panoramablick/i});
+        const images = screen.getAllByRole('img', {name: /Panoramablick house view/i});
         expect(images).toHaveLength(3);
 
         const ctaButton = screen.getByRole('link', {name: /Explore the house gallery/i});
