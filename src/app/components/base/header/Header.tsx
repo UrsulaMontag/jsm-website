@@ -16,45 +16,54 @@ export default function Header() {
     };
     return (
         <header role="banner"
-                className="bg-light-bg dark:bg-dark-bg w-full min-h-[7vh] p-2 sticky top-0 z-10 flex items-center justify-between">
+                className="bg-neutral-beige dark:bg-dark-bg w-full min-h-[7vh] p-2 sticky top-0 z-10 flex items-center justify-between">
+            {/* Logo */}
             <div className="nav_logo pl-3">
-                <Link href="/" className="text-lg font-semibold">
+                <Link href="/" className="text-lg font-semibold text-lake-blue dark:text-dark-text">
                     <h2>{t("logo")}</h2>
                 </Link>
             </div>
 
+            {/* Mobile Navigation Links */}
+            <nav>
+                <ul className={`md:hidden space-y-2 mt-2 text-sunset-orange dark:text-dark-highlight ${isToggleOpen ? 'block' : 'hidden'}`}>
+                    <li><Link href="/" onClick={handleToggleOpen}>{t("nav.home")}</Link></li>
+                    <li><Link href="/the-house" onClick={handleToggleOpen}>{t("nav.theHouse")}</Link></li>
+                    <li><Link href="/gallery" onClick={handleToggleOpen}>{t("nav.gallery")}</Link></li>
+                    <li><Link href="/activities" onClick={handleToggleOpen}>{t("nav.activities")}</Link></li>
+                    <li><Link href="/contact" onClick={handleToggleOpen}>{t("nav.contact")}</Link></li>
+                    <li>
+                        <LanguageSwitcher aria-label="Language switcher"/>
+                    </li>
+                </ul>
+            </nav>
+
+            {/* Navigation Links (Desktop Only) */}
+            <nav className="hidden md:flex space-x-4 text-lake-blue dark:text-dark-text">
+                <Link href="/">{t("nav.home")}</Link>
+                <Link href="/the-house">{t("nav.theHouse")}</Link>
+                <Link href="/gallery">{t("nav.gallery")}</Link>
+                <Link href="/activities">{t("nav.activities")}</Link>
+                <Link href="/contact">{t("nav.contact")}</Link>
+            </nav>
+
+            {/* Language Switcher */}
             <div className="hidden sm:flex">
-                <LanguageSwitcher/>
+                <LanguageSwitcher
+                    aria-label="Language switcher"
+                />
             </div>
+
+            {/* Mobile Hamburger Menu Button */}
             <button
                 data-testid="menu-button"
                 aria-label="Toggle menu"
                 aria-expanded={isToggleOpen}
-                className="md:hidden"
+                className="md:hidden text-sunset-orange dark:text-dark-highlight"
                 onClick={handleToggleOpen}
             >
-                <FaBars
-                    className={`${isToggleOpen ? "hidden" : "block"} text-light-text dark:text-dark-text text-3xl absolute right-5 top-4 cursor-pointer`}
-                />
+                <FaBars className="text-3xl"/>
             </button>
-            <ul
-                className={`list-none  text-secondary-light ${isToggleOpen ? "block" : "hidden"
-                } md:block`}
-            >
-                <li className="hover:bg-blue-400 p-2 rounded text-secondary-light dark:text-secondary-dark">
-                    <Link href="/" onClick={handleToggleOpen}>
-                        {t("nav.home")}
-                    </Link>
-                </li>
-                <li className="hover:bg-blue-400 p-2 rounded text-secondary-light dark:text-secondary-dark">
-                    <Link href="/about" onClick={handleToggleOpen}>
-                        {t("nav.about")}
-                    </Link>
-                </li>
-                <li className="p-2 rounded flex sm:hidden">
-                    <LanguageSwitcher/>
-                </li>
-            </ul>
         </header>
     );
 }

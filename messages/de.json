@@ -1,26 +1,45 @@
 {
-  "title": "Ankerplatz Lütjen-Deile",
-  "subTitle": "Sauna, See und Stille – wo der Stress weicht.",
   "HomePage": {
-    "welcome": "Willkommen am Ankerplatz Lütjen-Deile",
-    "description": "Ankerplatz Lütjen-Deile ist ein wahres Paradies für alle, die sich eine romantische Auszeit gönnen möchten.Am Ufer des Sees gelegen, mit eigenem Anlegesteg und einer Sauna für entspannende Stunden zu zweit, bietet dieser Ort alles, was das Herz begehrt, um den Alltag zu vergessen.Genießen Sie den Sonnenuntergang im privaten Rückzugsort, umgeben von atemberaubender Natur – und lassen Sie sich von der Ruhe und Zweisamkeit verzaubern. Hier können Sie sich nicht nur entspannen, sondern sich auch ganz neu entdecken. Ein Ort für Paare, die gemeinsam zur Ruhe kommen wollen.",
-    "cta": "Mehr Ansichten"
+    "hero": {
+      "title": "Ferienhaus Panoramablick Steinhuder Meer",
+      "subtitle": "Sauna, See und Stille – wo der Stress weicht.",
+      "welcome": "Willkommen im Ferienhaus Panoramablick",
+      "description": "Unser Ferienhaus Panoramablick ist ein wahres Paradies für alle, die sich eine romantische Auszeit gönnen möchten.Am Ufer des Sees gelegen, mit eigenem Anlegesteg und einer Sauna für entspannende Stunden zu zweit, bietet dieser Ort alles, was das Herz begehrt, um den Alltag zu vergessen.Genießen Sie den Sonnenuntergang im privaten Rückzugsort, umgeben von atemberaubender Natur – und lassen Sie sich von der Ruhe und Zweisamkeit verzaubern. Hier können Sie sich nicht nur entspannen, sondern sich auch ganz neu entdecken. Ein Ort für Paare, die gemeinsam zur Ruhe kommen wollen.",
+      "cta": "Mehr Ansichten"
+    },
+    "about": {
+      "title": "Entdecken Sie Panoramablick",
+      "description": "Erleben Sie Ruhe, Privatsphäre und Luxus im Ferienhaus Panoramablick, mit Annehmlichkeiten wie einem privaten Steg, einer Sauna und einem abgeschiedenen Garten.",
+      "cta": "Das Haus erkunden"
+    }
   },
   "Header": {
     "nav": {
       "home": "Startseite",
-      "about": "Über uns"
+      "theHouse": "Das Haus",
+      "gallery": "Galerie",
+      "activities": "Aktivitäten",
+      "contact": "Kontakt"
     },
-    "logo": "Ankerplatz Lütjen-Deile"
+    "logo": "Ferienhaus Panoramablick"
   },
   "Footer": {
     "nav": {
       "home": "Startseite",
-      "about": "Über uns",
-      "contact": "Kontakt",
-      "imprint": "Impressum"
+      "theHouse": "Das Haus",
+      "gallery": "Galerie",
+      "activities": "Aktivitäten",
+      "contact": "Kontakt"
     },
-    "copyright": "Ankerplatz Lütjen-Deile"
+    "contact": {
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "address": "Adresse"
+    },
+    "imprint": {
+      "copyright": "Ferienhaus Panoramablick. Alle Rechte vorbehalten.",
+      "link": "Impressum & Rechtliches"
+    }
   },
   "LanguageSwitcher": {
     "label": "Change language",
@@ -32,10 +51,10 @@
   "Imprint": {
     "title": "Impressum",
     "companyInfo": "Firmeninformation",
-    "companyName": "Ankerplatz Lütjen-Deile",
+    "companyName": "Ferienhaus Panoramablick",
     "address": "Lütjen-Deile 39, xxx Deile",
     "contact": "Kontakt",
     "legalInfo": "Rechtliche Informationen",
-    "legalDetails": "Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV: Ankerplatz Lütjen-Deile"
+    "legalDetails": "Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV: Ferienhaus Panoramablick"
   }
 }

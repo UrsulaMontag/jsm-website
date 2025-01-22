@@ -1,8 +1,8 @@
-import Hero from "@/app/components/Hero";
+import Hero from "@/app/components/home/Hero";
 import {ImageType} from "@/types/cloudinary";
 import {render, screen} from "@testing-library/react";
 import {NextIntlClientProvider} from "next-intl";
-import enMessages from '@/../messages/en.json';
+import enMessages from '../../../messages/en.json';
 
 jest.mock('next-cloudinary');
 
@@ -32,4 +32,6 @@ describe('Hero component', () => {
         const image = screen.getByTestId('cld-image');
         expect(image).toBeInTheDocument();
     });
+
+
 });

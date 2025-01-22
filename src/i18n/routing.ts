@@ -6,17 +6,21 @@ export const routing = defineRouting({
     defaultLocale: 'de',
     pathnames: {
         '/': '/',
-        '/about': {
-            en: '/about',
-            de: '/ueberUns'
+        '/the-house': {
+            en: '/the-house',
+            de: '/das-haus'
         },
         '/gallery': {
             en: '/gallery',
             de: '/gallerie'
         },
-        '/imprint': {
-            en: '/imprint',
-            de: '/impressum'
+        '/activities': {
+            en: '/activities',
+            de: '/Aktivitäten'
+        },
+        '/contact': {
+            en: '/contact',
+            de: '/kontakt'
         }
     },
 });
