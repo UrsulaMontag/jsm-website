@@ -10,7 +10,7 @@ export default function Hero({heroImage}: Readonly<HeroProps>) {
     const t = useTranslations("HomePage");
 
     return (
-        <section aria-labelledby="hero-heading" role={"main-content"}
+        <section aria-labelledby="hero-heading" data-testid="hero"
                  className="relative h-screen bg-sunset-gradient flex flex-col justify-center items-center">
             {/* Background Image */}
             {heroImage && (

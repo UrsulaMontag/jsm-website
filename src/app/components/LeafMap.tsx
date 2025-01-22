@@ -15,7 +15,7 @@ const defaults = {
     zoom: 19,
 };
 
-function Map(Map: Readonly<MapProps>) {
+function LeafMap(Map: Readonly<MapProps>) {
     const {zoom = defaults.zoom, posix} = Map;
 
     return (
@@ -37,4 +37,4 @@ function Map(Map: Readonly<MapProps>) {
     )
 }
 
-export default Map;
+export default LeafMap;
