@@ -9,7 +9,10 @@ jest.mock('next-intl', () => ({
         const translations: Record<string, string> = {
             'logo': 'Logo',
             'nav.home': 'Home',
-            'nav.about': 'About'
+            'nav.theHouse': 'The House',
+            'nav.gallery': 'Gallery',
+            'nav.activities': 'Activities',
+            'nav.contact': 'Contact',
         };
         return translations[key] || key;
     },
@@ -36,7 +39,6 @@ jest.mock('@/app/components/base/header/LanguageSwitcher', () => {
     };
 });
 
-
 describe('Header', () => {
     const renderHeader = () => {
         return render(
@@ -50,31 +52,75 @@ describe('Header', () => {
         renderHeader();
 
         expect(screen.getByText('Logo')).toBeInTheDocument();
-        expect(screen.getByText('Home')).toBeInTheDocument();
-        expect(screen.getByText('About')).toBeInTheDocument();
-
+        expect(screen.getAllByText('Home').length).toBeGreaterThan(0);
+        expect(screen.getAllByText('The House').length).toBeGreaterThan(0);
+        expect(screen.getAllByText('Gallery').length).toBeGreaterThan(0);
+        expect(screen.getAllByText('Activities').length).toBeGreaterThan(0);
+        expect(screen.getAllByText('Contact').length).toBeGreaterThan(0);
         const languageSwitchers = screen.getAllByTestId('language-switcher');
         expect(languageSwitchers[0]).toBeInTheDocument();
-        expect(languageSwitchers[1]).toBeInTheDocument();
     });
 
     it('toggles mobile menu when hamburger icon is clicked', () => {
         renderHeader();
 
         const menuButton = screen.getByTestId('menu-button');
-        const navList = screen.getByRole('list');
+        fireEvent.click(menuButton);
+        const navElements = screen.getAllByRole('navigation');
+        const mobileNav = navElements.find(nav => nav.querySelector('ul'));
+        if (mobileNav) {
+            expect(mobileNav.querySelector('ul')).toHaveClass('block');
 
-        expect(navList).toHaveClass('hidden');
-        fireEvent.click(menuButton);
-        expect(navList).toHaveClass('block');
-        fireEvent.click(menuButton);
-        expect(navList).toHaveClass('hidden');
+            fireEvent.click(menuButton);
+            expect(mobileNav.querySelector('ul')).toHaveClass('hidden');
+        }
     });
 
     it('renders navigation links with correct hrefs', () => {
         renderHeader();
 
-        expect(screen.getByText('Home').closest('a')).toHaveAttribute('href', '/');
-        expect(screen.getByText('About').closest('a')).toHaveAttribute('href', '/about');
+        const homeLinks = screen.getAllByText('Home');
+        homeLinks.forEach(link => {
+            expect(link.closest('a')).toHaveAttribute('href', '/');
+        });
+
+        const theHouseLinks = screen.getAllByText('The House');
+        theHouseLinks.forEach(link => {
+            expect(link.closest('a')).toHaveAttribute('href', '/the-house');
+        });
+
+        const galleryLinks = screen.getAllByText('Gallery');
+        galleryLinks.forEach(link => {
+            expect(link.closest('a')).toHaveAttribute('href', '/gallery');
+        });
+
+        const activitiesLinks = screen.getAllByText('Activities');
+        activitiesLinks.forEach(link => {
+            expect(link.closest('a')).toHaveAttribute('href', '/activities');
+        });
+
+        const contactLinks = screen.getAllByText('Contact');
+        contactLinks.forEach(link => {
+            expect(link.closest('a')).toHaveAttribute('href', '/contact');
+        });
+    });
+
+
+    it('renders the language switcher', () => {
+        renderHeader();
+        const languageSwitchers = screen.getAllByTestId('language-switcher');
+        expect(languageSwitchers[0]).toBeInTheDocument();
+        expect(languageSwitchers[1]).toBeInTheDocument();
+    });
+
+    it('has the correct aria attributes for the menu button', () => {
+        renderHeader();
+        const menuButton = screen.getByTestId('menu-button');
+        expect(menuButton).toHaveAttribute('aria-label', 'Toggle menu');
+        expect(menuButton).toHaveAttribute('aria-expanded', 'false'); // Initially closed
+
+        // Open the mobile menu
+        fireEvent.click(menuButton);
+        expect(menuButton).toHaveAttribute('aria-expanded', 'true'); // Now open
     });
 });

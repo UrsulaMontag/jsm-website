@@ -1,17 +1,27 @@
 {
-  "title": "Anchor Point Lütjen-Deile",
-  "subTitle": "Sauna, lake, and silence – where stress melts away.",
   "HomePage": {
-    "welcome": "Welcome to Anchor Point Lütjen-Deile",
-    "description": "Anchor Point Lütjen-Deile is a true paradise for those who want to treat themselves to a romantic getaway. Situated on the shores of the lake, with its own jetty and sauna for relaxing hours for two, this place offers everything your heart desires to forget about everyday life, enjoy the sunset in a private retreat surrounded by breathtaking nature - and let yourself be enchanted by the peace and togetherness. Here you can not only relax, but also rediscover yourself. A place for couples who want to rest together.",
-    "cta": "More views"
+    "hero": {
+      "title": "Vacation Home Panoramic View Steinhuder Meer",
+      "subtitle": "Sauna, lake, and silence – where stress melts away.",
+      "welcome": "Welcome to Vacation house Panoramic View",
+      "description": "Vacation house Panoramic View is a true paradise for those who want to treat themselves to a romantic getaway. Situated on the shores of the lake, with its own jetty and sauna for relaxing hours for two, this place offers everything your heart desires to forget about everyday life, enjoy the sunset in a private retreat surrounded by breathtaking nature - and let yourself be enchanted by the peace and togetherness. Here you can not only relax, but also rediscover yourself. A place for couples who want to rest together.",
+      "cta": "More views"
+    },
+    "about": {
+      "title": "Discover Panoramablick",
+      "description": "Experience peace, privacy, and luxury at Ferienhaus Panoramablick, with amenities like a private jetty, sauna, and secluded garden.",
+      "cta": "Explore the House"
+    }
   },
   "Header": {
     "nav": {
       "home": "Home",
-      "about": "About"
+      "theHouse": "The House",
+      "gallery": "Gallery",
+      "activities": "Activities",
+      "contact": "Contact"
     },
-    "logo": "Anchor Point Lütjen-Deile"
+    "logo": "Vacation house Panoramic View"
   },
   "Footer": {
     "nav": {
@@ -20,7 +30,7 @@
       "contact": "Contact",
       "imprint": "Imprint"
     },
-    "copyright": "Anchor Point Lütjen-Deile"
+    "copyright": "Vacation house Panoramic View"
   },
   "LanguageSwitcher": {
     "label": "Change language",
@@ -32,10 +42,10 @@
   "Imprint": {
     "title": "Imprint",
     "companyInfo": "Company information",
-    "companyName": "Anchor Point Lütjen-Deile",
+    "companyName": "Vacation house Panoramic View",
     "address": "Lütjen-Deile 39, xxx Deile",
     "contact": "Contact",
     "legalInfo": "Legal information",
-    "legalDetails": "Responsible for content according to § 55 Abs. 2 RStV: Anchor Point Lütjen-Deile"
+    "legalDetails": "Responsible for content according to § 55 Abs. 2 RStV: Vacation house Panoramic View"
   }
 }

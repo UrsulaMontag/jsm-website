@@ -9,7 +9,7 @@ describe('Home Page', () => {
     });
 
     it('renders the hero image', () => {
-        cy.get('img[alt="Hero image"]').should('be.visible');
+        cy.get('img[alt="Hero image of sunset over Steinhuder Meer"]').should('be.visible');
     });
 
     it('fetches and displays images', () => {
@@ -21,6 +21,14 @@ describe('Home Page', () => {
 
     it('has accessible hero section', () => {
         cy.get('section[aria-labelledby="hero-heading"]').should('exist');
+    });
+
+    it('renders the about house section with images and CTA button', () => {
+        cy.get('section[aria-labelledby="about-house-heading"]').should('exist');
+        cy.get('h2#about-house-heading').should('contain.text', 'Entdecken Sie Panoramablick');
+        cy.get('p[aria-label="Erleben Sie Ruhe, Privatsphäre und Luxus im Ferienhaus Panoramablick, mit Annehmlichkeiten wie einem privaten Steg, einer Sauna und einem abgeschiedenen Garten."]').should('exist');
+        cy.get('div[role="img"]').should('have.length', 3);
+        cy.get('a[aria-label="Explore the house gallery"]').should('exist');
     });
 
     it('renders the footer', () => {
