@@ -5,6 +5,7 @@ import {FaBars} from "react-icons/fa";
 import LanguageSwitcher from "@/app/components/base/header/LanguageSwitcher";
 import {useTranslations} from "next-intl";
 import {Link} from "@/i18n/routing";
+import {body} from "@/../../styles/fonts";
 
 
 export default function Header() {
@@ -16,11 +17,11 @@ export default function Header() {
     };
     return (
         <header role="banner"
-                className="bg-neutral-beige dark:bg-dark-bg w-full min-h-[7vh] p-2 sticky top-0 z-10 flex items-center justify-between">
+                className="bg-neutral-beige dark:bg-dark-bg w-full min-h-[7vh] p-2 sticky top-0 z-30 flex items-center justify-between">
             {/* Logo */}
             <div className="nav_logo pl-3">
                 <Link href="/" className="text-lg font-semibold text-lake-blue dark:text-dark-text">
-                    <h2>{t("logo")}</h2>
+                    <h2 className={`${body.className}`}>{t("logo")}</h2>
                 </Link>
             </div>
 
