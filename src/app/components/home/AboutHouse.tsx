@@ -26,15 +26,15 @@ export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
                             {t('about.title')}
                         </h2>
 
-                        <p
-                            className="text-lg md:text-xl text-lake-blue dark:text-dark-text mb-6"
+                        <p aria-label={t('about.description')}
+                           className="text-lg md:text-xl text-lake-blue dark:text-dark-text mb-6"
                         >
                             {t('about.description')}
                         </p>
 
-                        <Link
-                            href="/gallery"
-                            className="inline-block bg-sunset-orange hover:bg-sunset-orange-dark text-white text-lg py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"
+                        <Link aria-label="Explore the house gallery"
+                              href="/gallery"
+                              className="inline-block bg-sunset-orange hover:bg-sunset-orange-dark text-white text-lg py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"
                         >
                             {t('about.cta')}
                         </Link>
@@ -43,12 +43,12 @@ export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
                     {/* Image Section */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                         {images.map((image, index) => (
-                            <div
-                                key={image.public_id}
-                                className={`relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform transition-transform hover:scale-110`}
-                                style={{
-                                    gridRow: index % 3 === 0 ? 'span 2' : 'span 1', // Dynamic height for a masonry feel
-                                }}
+                            <div data-testid="about-house-image"
+                                 key={image.public_id}
+                                 className={`relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform transition-transform hover:scale-110`}
+                                 style={{
+                                     gridRow: index % 3 === 0 ? 'span 2' : 'span 1', // Dynamic height for a masonry feel
+                                 }}
                             >
                                 <CldImage
                                     src={image.public_id}

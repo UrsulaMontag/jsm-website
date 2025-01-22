@@ -96,4 +96,31 @@ describe('Home', () => {
         const ctaButton = screen.getByRole('link', {name: /Explore the house gallery/i});
         expect(ctaButton).toBeInTheDocument();
     });
+
+    it('renders the highlights section with icons and labels', async () => {
+        await act(async () => {
+            render(
+                <NextIntlClientProvider locale="en" messages={messages}>
+                    <Home/>
+                </NextIntlClientProvider>
+            );
+        });
+
+        const highlightsHeading = screen.getByRole('heading', {name: /Why Stay at Panoramablick\?/i});
+        expect(highlightsHeading).toBeInTheDocument();
+
+        const features = [
+            'Boat',
+            'Secluded Garden',
+            'Luxury Sauna',
+            'Parking',
+            'Sunset',
+            'Dogs'
+        ];
+
+        features.forEach(feature => {
+            const label = screen.getByText(new RegExp(feature));
+            expect(label).toBeInTheDocument();
+        });
+    });
 });

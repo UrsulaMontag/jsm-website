@@ -31,6 +31,25 @@ describe('Home Page', () => {
         cy.get('a[aria-label="Explore the house gallery"]').should('exist');
     });
 
+    it('renders the highlights section with icons and labels', () => {
+        cy.get('section[aria-labelledby="highlights-heading"]').should('exist');
+        cy.get('h2#highlights-heading').should('contain.text', 'Warum Panoramablick?');
+
+        const features = [
+            'Ruderboot',
+            'Garten',
+            'Sauna',
+            'Parken',
+            'Sonnenuntergänge',
+            'Hunde'
+        ];
+
+        features.forEach(feature => {
+            cy.log(`Checking for feature: ${feature}`);
+            cy.get('p').contains(new RegExp(feature, 'i')).should('exist');
+        });
+    });
+
     it('renders the footer', () => {
         cy.get('footer').should('be.visible');
     });
