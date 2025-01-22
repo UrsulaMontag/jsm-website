@@ -26,11 +26,20 @@
   "Footer": {
     "nav": {
       "home": "Startseite",
-      "about": "Über uns",
-      "contact": "Kontakt",
-      "imprint": "Impressum"
+      "theHouse": "Das Haus",
+      "gallery": "Galerie",
+      "activities": "Aktivitäten",
+      "contact": "Kontakt"
     },
-    "copyright": "Ferienhaus Panoramablick"
+    "contact": {
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "address": "Adresse"
+    },
+    "imprint": {
+      "copyright": "Ferienhaus Panoramablick. Alle Rechte vorbehalten.",
+      "link": "Impressum & Rechtliches"
+    }
   },
   "LanguageSwitcher": {
     "label": "Change language",
