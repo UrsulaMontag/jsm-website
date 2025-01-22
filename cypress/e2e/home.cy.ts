@@ -27,7 +27,7 @@ describe('Home Page', () => {
         cy.get('section[aria-labelledby="about-house-heading"]').should('exist');
         cy.get('h2#about-house-heading').should('contain.text', 'Entdecken Sie Panoramablick');
         cy.get('p[aria-label="Erleben Sie Ruhe, Privatsphäre und Luxus im Ferienhaus Panoramablick, mit Annehmlichkeiten wie einem privaten Steg, einer Sauna und einem abgeschiedenen Garten."]').should('exist');
-        cy.get('div[role="img"]').should('have.length', 3);
+        cy.get('div[data-testid="about-house-image"]').should('have.length', 3);
         cy.get('a[aria-label="Explore the house gallery"]').should('exist');
     });
 

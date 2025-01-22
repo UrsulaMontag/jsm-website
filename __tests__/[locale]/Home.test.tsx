@@ -67,7 +67,7 @@ describe('Home', () => {
             );
         });
 
-        const heroSection = screen.getByRole('main-content');
+        const heroSection = screen.getByTestId("hero");
         expect(heroSection).toBeInTheDocument();
 
         const ctaButton = screen.getByTestId('cta-button');

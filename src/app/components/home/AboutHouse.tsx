@@ -19,7 +19,6 @@ export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
                 <h2
                     id="about-house-heading"
                     className="text-3xl md:text-5xl font-bold text-lake-blue dark:text-dark-highlight"
-                    role="heading"
                 >
                     {t('about.title')}
                 </h2>
@@ -36,9 +35,9 @@ export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {images.map((image) => (
                         <div
+                            data-testid="about-house-image"
                             key={image.public_id}
                             className="overflow-hidden rounded-lg"
-                            role="img"
                             aria-label="Image of Panoramablick house and surroundings"
                         >
                             <CldImage

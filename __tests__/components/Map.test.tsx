@@ -1,5 +1,5 @@
 import {render} from "@testing-library/react";
-import Map from '@/app/components/Map';
+import LeafMap from '@/app/components/LeafMap';
 import {MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
 
 jest.mock('react-leaflet', () => ({
@@ -14,14 +14,14 @@ const MockedMarker = Marker as jest.MockedFunction<typeof Marker>;
 const MockedTileLayer = TileLayer as jest.MockedFunction<typeof TileLayer>;
 const MockedPopup = Popup as jest.MockedFunction<typeof Popup>;
 
-describe('Map component', () => {
+describe('LeafMap component', () => {
     beforeEach(() => {
         jest.clearAllMocks();
     });
 
     it('renders map component correctly', () => {
         const posix: [number, number] = [51.505, -0.09];
-        render(<Map posix={posix}/>);
+        render(<LeafMap posix={posix}/>);
 
         expect(MockedMapContainer).toHaveBeenCalled();
         expect(MockedTileLayer).toHaveBeenCalled();
@@ -41,7 +41,7 @@ describe('Map component', () => {
 
     it('uses default zoom level when not provided', () => {
         const posix: [number, number] = [51.505, -0.09];
-        render(<Map posix={posix}/>);
+        render(<LeafMap posix={posix}/>);
 
         const mapContainerProps = MockedMapContainer.mock.calls[0][0];
         expect(mapContainerProps.zoom).toBe(19);
@@ -49,7 +49,7 @@ describe('Map component', () => {
 
     it('uses provided zoom level', () => {
         const posix: [number, number] = [51.505, -0.09];
-        render(<Map posix={posix} zoom={15}/>);
+        render(<LeafMap posix={posix} zoom={15}/>);
 
         const mapContainerProps = MockedMapContainer.mock.calls[0][0];
         expect(mapContainerProps.zoom).toBe(15);
