@@ -48,13 +48,15 @@ export default function Footer() {
                         <p>{t('contact.phone')}: +49 123 456 789</p>
                         <p>{t('contact.address')}: Lütjen-Deile 39, 31515 Wunstorf, Germany</p>
                     </div>
+                    {/* Footer Bottom: Imprint */}
+                    <div className="text-center text-xs ">
+                        <p>&copy; {new Date().getFullYear()} {t('imprint.copyright')}</p>
+                        <p><Link href="/contact" className="underline">{t('imprint.link')}</Link></p>
+                        <span></span>
+                    </div>
                 </div>
 
-                {/* Footer Bottom: Imprint */}
-                <div className="mt-6 text-center text-xs ">
-                    <p>&copy; {new Date().getFullYear()} {t('imprint.copyright')}</p>
-                    <p><Link href="/contact" className="underline">{t('imprint.link')}</Link></p>
-                </div>
+
             </div>
         </footer>
     );
