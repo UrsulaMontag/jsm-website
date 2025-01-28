@@ -39,6 +39,34 @@
         "title": "Hunde Willkommen",
         "description": "Bringen Sie Ihre vierbeinigen Freunde für einen unvergesslichen Aufenthalt mit."
       }
+    },
+    "activities": {
+      "title": "Erleben Sie das Steinhuder Meer",
+      "description": "Genießen Sie die Vielfalt der Aktivitäten in der Nähe des Ferienhauses Panoramablick. Vom Rudern bis zur Vogelbeobachtung – für jeden ist etwas dabei.",
+      "rowing": {
+        "title": "Rudern",
+        "description": "Nehmen Sie das Ruderboot auf den See."
+      },
+      "cycling": {
+        "title": "Radfahren",
+        "description": "Erkunden Sie malerische Radwege."
+      },
+      "fishing": {
+        "title": "Angeln",
+        "description": "Angeln Sie direkt vom privaten Steg."
+      },
+      "walking": {
+        "title": "Spaziergänge",
+        "description": "Spazieren Sie entlang der ruhigen Ufer des Steinhuder Meers."
+      },
+      "birdwatching": {
+        "title": "Vogelbeobachtung",
+        "description": "Beobachten Sie die heimische Tierwelt in ihrer natürlichen Umgebung."
+      },
+      "dining": {
+        "title": "Gastronomie",
+        "description": "Entdecken Sie nahegelegene Restaurants mit Seeblick."
+      }
     }
   },
   "Header": {

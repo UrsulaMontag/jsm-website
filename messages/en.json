@@ -39,6 +39,34 @@
         "title": "Dogs Allowed",
         "description": "Bring your furry companions for an unforgettable stay."
       }
+    },
+    "activities": {
+      "title": "Experience Steinhuder Meer",
+      "description": "Enjoy the variety of activities available near Ferienhaus Panoramablick. From rowing to birdwatching, there’s something for everyone.",
+      "rowing": {
+        "title": "Rowing",
+        "description": "Take the rowing boat onto the lake."
+      },
+      "cycling": {
+        "title": "Cycling",
+        "description": "Explore scenic cycling paths."
+      },
+      "fishing": {
+        "title": "Fishing",
+        "description": "Enjoy fishing directly from the private jetty."
+      },
+      "walking": {
+        "title": "Lakeside Walks",
+        "description": "Peaceful walks along the shores of Steinhuder Meer."
+      },
+      "birdwatching": {
+        "title": "Birdwatching",
+        "description": "Spot local wildlife in their natural habitat."
+      },
+      "dining": {
+        "title": "Dining",
+        "description": "Discover nearby restaurants with lakeside views."
+      }
     }
   },
   "Header": {
