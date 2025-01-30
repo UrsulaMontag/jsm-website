@@ -1,5 +1,6 @@
 import {useTranslations} from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
@@ -87,8 +88,8 @@ export default function Activities() {
 
                                     {/* Image Attribution */}
                                     <p className="mt-2 text-xs text-center text-gray-500">
-                                        Photo by <a href={activity.link} target="_blank" rel="noopener noreferrer"
-                                                    className="underline">{activity.author}</a> on Unsplash
+                                        Photo by <Link href={activity.link} target="_blank" rel="noopener noreferrer"
+                                                       className="underline">{activity.author}</Link> on Unsplash
                                     </p>
                                 </div>
                             ))}
