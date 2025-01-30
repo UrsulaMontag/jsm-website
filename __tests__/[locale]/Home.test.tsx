@@ -4,6 +4,7 @@ import Home from '@/app/[locale]/page';
 import {NextIntlClientProvider} from 'next-intl';
 import messages from '../../messages/en.json';
 
+
 jest.mock('next-cloudinary');
 
 const mockImageData = [
@@ -50,6 +51,7 @@ global.fetch = jest.fn(() =>
         json: () => Promise.resolve(mockImageData)
     })
 ) as jest.Mock;
+
 
 describe('Home', () => {
     beforeEach(() => {

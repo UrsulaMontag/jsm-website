@@ -1,13 +1,12 @@
 import {useTranslations} from 'next-intl';
 import Image from 'next/image';
-import 'slick-carousel/slick/slick.css'; // Import the slick carousel CSS
-import 'slick-carousel/slick/slick-theme.css'; // Import slick carousel theme CSS
-import Slider from 'react-slick'; // Import the slider
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
 
 export default function Activities() {
     const t = useTranslations('HomePage.activities');
 
-    // Slider settings
     const sliderSettings = {
         dots: true,
         infinite: true,
@@ -41,7 +40,6 @@ export default function Activities() {
             author: 'MARIOLA GROBELSKA',
             link: 'https://unsplash.com/de/fotos/eine-person-die-uber-eine-brucke-uber-ein-gewasser-geht-tkuidfuPYUc',
         },
-        // Add more activities as needed...
     ];
 
     return (
@@ -70,14 +68,14 @@ export default function Activities() {
                         <Slider {...sliderSettings}>
                             {activities.map((activity) => (
                                 <div key={activity.title} className="relative">
-                                    {/* Activity Image */}
                                     <Image
                                         src={activity.imageUrl}
                                         alt={activity.imageAlt}
                                         width={1200}
                                         height={800}
                                         className="rounded-lg shadow-lg"
-                                        objectFit="cover"
+                                        style={{objectFit: 'cover'}}
+
                                     />
 
                                     {/* Image Caption */}
