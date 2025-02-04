@@ -1,7 +1,8 @@
-import {CldImage} from 'next-cloudinary';
 import {useTranslations} from 'next-intl';
-import {ImageType} from "@/types/cloudinary";
 import {Link} from "@/i18n/routing";
+import Image from "next/image";
+import {ImageType} from "@/types/cloudinary";
+import {cloudinaryLoader} from "@/lib/cloudinaryLoader";
 
 type AboutHouseProps = {
     images: ImageType[];
@@ -9,6 +10,9 @@ type AboutHouseProps = {
 
 export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
     const t = useTranslations('HomePage');
+    const key = (index: number) => index;
+
+
     return (
         <section
             aria-labelledby="about-house-heading"
@@ -44,16 +48,17 @@ export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                         {images.map((image, index) => (
                             <div data-testid="about-house-image"
-                                 key={image.public_id}
+                                 key={key(index)}
                                  className={`relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform transition-transform hover:scale-110`}
                                  style={{
-                                     gridRow: index % 3 === 0 ? 'span 2' : 'span 1', // Dynamic height for a masonry feel
+                                     gridRow: index % 3 === 0 ? 'span 2' : 'span 1',
+                                     height: index % 3 === 0 ? '300px' : '150px',
                                  }}
                             >
-                                <CldImage
+                                <Image
+                                    loader={cloudinaryLoader}
                                     src={image.public_id}
-                                    width={image.width}
-                                    height={image.height}
+                                    fill
                                     alt="Panoramablick house view"
                                     className="object-cover w-full h-full"
                                 />

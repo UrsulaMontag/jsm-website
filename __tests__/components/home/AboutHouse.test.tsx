@@ -3,46 +3,30 @@ import {render, screen} from '@testing-library/react';
 import AboutHouse from '@/app/components/home/AboutHouse';
 import {NextIntlClientProvider} from 'next-intl';
 import messages from '../../../messages/en.json';
-import {ImageType} from "@/types/cloudinary";
 
-jest.mock('next-cloudinary');
-const mockImages: ImageType[] = [
+const mockImages = [
     {
         public_id: "Ferienhaus_Steinhude/aboutHouse1",
         width: 800,
         height: 600,
-        url: "https://test-url.com/image1.jpg",
         alt: "Test Image 1",
-        asset_id: '',
-        sizes: '',
-        folder: ''
     },
     {
         public_id: "Ferienhaus_Steinhude/aboutHouse2",
         width: 800,
         height: 600,
-        url: "https://test-url.com/image2.jpg",
         alt: "Test Image 2",
-        asset_id: '',
-        sizes: '',
-        folder: ''
     },
     {
         public_id: "Ferienhaus_Steinhude/aboutHouse3",
         width: 800,
         height: 600,
-        url: "https://test-url.com/image3.jpg",
         alt: "Test Image 3",
-        asset_id: '',
-        sizes: '',
-        folder: ''
     }
 ];
 
 describe('AboutHouse', () => {
-    beforeEach(() => {
-        process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME = 'test_cloud_name';
-    });
+
     it('renders the about house section with images and CTA button', () => {
         render(
             <NextIntlClientProvider locale="en" messages={messages}>
