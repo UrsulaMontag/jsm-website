@@ -5,61 +5,17 @@ import {NextIntlClientProvider} from 'next-intl';
 import messages from '../../messages/en.json';
 
 
-jest.mock('next-cloudinary');
-
-const mockImageData = [
-    {
-        asset_id: "test-id-1",
-        public_id: "Ferienhaus_Steinhude/q5rmzqeq9e5wp1d61tm3",
-        width: 1920,
-        height: 1080,
-        folder: "test-folder",
-        url: "https://test-url.com/image1.jpg",
-        alt: "Test Image 1"
-    },
-    {
-        asset_id: "test-id-2",
-        public_id: "Ferienhaus_Steinhude/aboutHouse1",
-        width: 800,
-        height: 600,
-        folder: "test-folder",
-        url: "https://test-url.com/image2.jpg",
-        alt: "Test Image 2"
-    },
-    {
-        asset_id: "test-id-3",
-        public_id: "Ferienhaus_Steinhude/aboutHouse2",
-        width: 800,
-        height: 600,
-        folder: "test-folder",
-        url: "https://test-url.com/image3.jpg",
-        alt: "Test Image 3"
-    },
-    {
-        asset_id: "test-id-4",
-        public_id: "Ferienhaus_Steinhude/aboutHouse3",
-        width: 800,
-        height: 600,
-        folder: "test-folder",
-        url: "https://test-url.com/image4.jpg",
-        alt: "Test Image 4"
+jest.mock('next/image', () => ({
+    __esModule: true,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    default: (props: any) => {
+        const {src, alt, ...rest} = props;
+        // eslint-disable-next-line
+        return <img src={src} alt={alt} {...rest} />;
     }
-];
-
-global.fetch = jest.fn(() =>
-    Promise.resolve({
-        json: () => Promise.resolve(mockImageData)
-    })
-) as jest.Mock;
-
+}));
 
 describe('Home', () => {
-    beforeEach(() => {
-        process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME = 'test_cloud_name';
-        process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME = 'test_preset';
-        (global.fetch as jest.Mock).mockClear();
-    });
-
     it('renders the hero section with CTA button', async () => {
         await act(async () => {
             render(

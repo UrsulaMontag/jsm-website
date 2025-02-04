@@ -1,30 +1,29 @@
-import type {ImageType} from '@/types/cloudinary';
-import {CldImage} from 'next-cloudinary';
+'use client'
+
 import {useTranslations} from 'next-intl';
 import Link from "next/link";
+import Image from "next/image";
+import {cloudinaryLoader} from "@/lib/cloudinaryLoader";
 
-type HeroProps = {
-    heroImage: ImageType | undefined;
-};
-export default function Hero({heroImage}: Readonly<HeroProps>) {
+
+export default function Hero() {
     const t = useTranslations("HomePage");
 
     return (
         <section aria-labelledby="hero-heading" data-testid="hero"
                  className="relative h-screen bg-sunset-gradient flex flex-col justify-center items-center">
             {/* Background Image */}
-            {heroImage && (
-                <CldImage
-                    src={heroImage.public_id}
-                    width={heroImage.width}
-                    height={heroImage.height}
-                    alt="Hero image of sunset over Steinhuder Meer"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    priority
-                    crop="fill"
-                    gravity="auto"
-                />
-            )}
+            <Image
+                loader={cloudinaryLoader}
+                src={`/Ferienhaus_Steinhude/q5rmzqeq9e5wp1d61tm3`}
+                fill
+                alt="Hero image of sunset over Steinhuder Meer"
+                priority
+                fetchPriority={'high'}
+                quality={90}
+                className="absolute inset-0 w-full h-full object-cover"
+                data-testid="hero-image"
+            />
 
             {/* Content */}
             <div className="relative z-10 text-center px-4">

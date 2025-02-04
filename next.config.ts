@@ -9,16 +9,12 @@ const nextConfig: NextConfig = {
             {
                 protocol: 'https',
                 hostname: 'res.cloudinary.com',
-            },
-            {
-                protocol: 'https',
-                hostname: 'images.unsplash.com',
-            },
-            {
-                protocol: 'https',
-                hostname: 'unsplash.com',
+
+
             },
         ],
+        loader: 'cloudinary',
+        path: 'https://res.cloudinary.com/montagu666/image/upload/',
     },
 };
 
