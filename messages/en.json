@@ -40,12 +40,38 @@
         "description": "Bring your furry companions for an unforgettable stay."
       }
     },
+    "location": {
+      "title": "Direct Lakeside Living",
+      "description": "Experience the unique connection to nature with private water access and breathtaking views.",
+      "features": {
+        "view": {
+          "title": "Panoramic Views",
+          "description": "Uninterrupted lake views from every angle of the property"
+        },
+        "access": {
+          "title": "Private Water Access",
+          "description": "Direct access to the lake via your own jetty and boat"
+        },
+        "privacy": {
+          "title": "Secluded Location",
+          "description": "Enjoy complete privacy surrounded by nature"
+        }
+      },
+      "close": "Close dialog",
+      "previous": "Previous image",
+      "next": "Next image",
+      "fallbackAlt": "Lakeside view"
+    },
     "activities": {
       "title": "Experience Steinhuder Meer",
       "description": "Enjoy the variety of activities available near Ferienhaus Panoramablick. From rowing to birdwatching, there’s something for everyone.",
       "rowing": {
         "title": "Rowing",
         "description": "Take the rowing boat onto the lake."
+      },
+      "yoga": {
+        "title": "Yoga by the Lake",
+        "description": "Enjoy a yoga session on the private jetty, surrounded by nature."
       },
       "cycling": {
         "title": "Cycling",
