@@ -81,4 +81,83 @@ describe('Home', () => {
             expect(label).toBeInTheDocument();
         });
     });
+
+    it('renders the location highlight section with images', async () => {
+        await act(async () => {
+            render(
+                <NextIntlClientProvider locale="en" messages={messages}>
+                    <Home/>
+                </NextIntlClientProvider>
+            );
+        });
+
+        const locationHeading = screen.getByRole('heading', {name: /Direct Lakeside Living/i});
+        expect(locationHeading).toBeInTheDocument();
+
+        const description = screen.getByText(/Experience the unique connection to nature/i);
+        expect(description).toBeInTheDocument();
+
+        const locationImages = screen.getAllByRole('img')
+            .filter(img => img.getAttribute('src')?.includes('why_pbsh'));
+        expect(locationImages.length).toBeGreaterThan(0);
+
+        const features = [
+            'Panoramic Views',
+            'Private Water Access'
+        ];
+        features.forEach(feature => {
+            const featureHeading = screen.getByRole('heading', {name: new RegExp(feature, 'i')});
+            expect(featureHeading).toBeInTheDocument();
+        });
+    });
+
+    it('renders the activities section with slider', async () => {
+        await act(async () => {
+            render(
+                <NextIntlClientProvider locale="en" messages={messages}>
+                    <Home/>
+                </NextIntlClientProvider>
+            );
+        });
+
+        const activitiesHeading = screen.getByRole('heading', {name: /Experience Steinhuder Meer/i, level: 2});
+        expect(activitiesHeading).toBeInTheDocument();
+
+        const prevButton = screen.getByRole('button', {name: /previous slide/i});
+        const nextButton = screen.getByRole('button', {name: /next slide/i});
+        expect(prevButton).toBeInTheDocument();
+        expect(nextButton).toBeInTheDocument();
+
+        const activityImages = screen.getAllByRole('img')
+            .filter(img => img.getAttribute('src')?.includes('activities'));
+        expect(activityImages.length).toBeGreaterThan(0);
+    });
+
+    it('renders all main sections in correct order', async () => {
+        await act(async () => {
+            render(
+                <NextIntlClientProvider locale="en" messages={messages}>
+                    <Home/>
+                </NextIntlClientProvider>
+            );
+        });
+
+        const main = document.body;
+        const sections = [
+            screen.getByTestId('hero'),
+            screen.getByRole('region', {name: /Direct Lakeside Living/i}),
+            screen.getByRole('region', {name: /Discover Panoramablick/i}),
+            screen.getByRole('region', {name: /Why Stay at Panoramablick/i}),
+            screen.getByRole('region', {name: /Experience Steinhuder Meer/i})
+        ];
+
+        sections.forEach(section => {
+            expect(section).toBeInTheDocument();
+        });
+
+        sections.reduce((previousSection, currentSection) => {
+            expect(main.compareDocumentPosition(currentSection) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+            return currentSection;
+        });
+    });
 });
