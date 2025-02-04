@@ -1,12 +1,46 @@
+'use client'
+
 import {useTranslations} from 'next-intl';
-import Image from 'next/image';
 import Link from 'next/link';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Slider from 'react-slick';
+import Slider, {CustomArrowProps} from 'react-slick';
+import {ImageType} from "@/types/cloudinary";
+import Image from "next/image";
+import {cloudinaryLoader} from "@/lib/cloudinaryLoader";
 
-export default function Activities() {
+type ActivityProps = {
+    images: ImageType[] | undefined;
+};
+export default function Activities({images}: Readonly<ActivityProps>) {
     const t = useTranslations('HomePage.activities');
+
+
+    const CustomPrevArrow = ({onClick}: CustomArrowProps) => {
+        return (
+            <button
+                type="button"
+                onClick={onClick}
+                aria-label="Previous slide"
+                className="slick-arrow slick-prev"
+            >
+                Previous
+            </button>
+        );
+    };
+
+    const CustomNextArrow = ({onClick}: CustomArrowProps) => {
+        return (
+            <button
+                type="button"
+                onClick={onClick}
+                aria-label="Next slide"
+                className="slick-arrow slick-next"
+            >
+                Next
+            </button>
+        );
+    };
 
     const sliderSettings = {
         dots: true,
@@ -14,32 +48,56 @@ export default function Activities() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
+        prevArrow: <CustomPrevArrow/>,
+        nextArrow: <CustomNextArrow/>,
     };
 
+    const defaultImage: ImageType = {
+        public_id: 'Ferienhaus_Steinhude/homepic_ppbju0_gpd5gj',
+        width: 800,
+        height: 600,
+        alt: 'Default Image',
+
+    };
+    const findImage = (public_id: string): ImageType => {
+        return images?.find((img) => img.public_id === public_id) || defaultImage;
+    };
+    const walkingImg: ImageType = findImage('Ferienhaus_Steinhude/activities/PXL_20230602_095846010_dmtmr0');
+    const yogaImg: ImageType = findImage('Ferienhaus_Steinhude/activities/PXL_20220617_201714361_2_j7o4cx');
+    const boatImg: ImageType = findImage('Ferienhaus_Steinhude/activities/ikorlrobn7obgd6luovn');
     const activities = [
-        {
-            title: t('rowing.title'),
-            description: t('rowing.description'),
-            imageUrl: '/activities/bernd-dittrich-4mehD_N3N5Q-unsplash.webp',
-            imageAlt: 'Rowing on a lake',
-            author: 'hdbernd',
-            link: 'https://unsplash.com/de/fotos/eine-person-in-einem-kleinen-boot-auf-einem-see-Wqm9tRrTYQk', // Photographer's profile link
-        },
-        {
-            title: t('cycling.title'),
-            description: t('cycling.description'),
-            imageUrl: '/activities/matt-saling-6tK2Og9dEKA-unsplash.webp',
-            imageAlt: 'Cycling',
-            author: 'Matt Saling ',
-            link: 'https://unsplash.com/de/fotos/schwarzes-rennrad-neben-brauner-holzwand-geparkt-6tK2Og9dEKA',
-        },
         {
             title: t('walking.title'),
             description: t('walking.description'),
-            imageUrl: '/activities/mariola-grobelska-tkuidfuPYUc-unsplash.webp',
-            imageAlt: 'walking over a bridge',
-            author: 'MARIOLA GROBELSKA',
-            link: 'https://unsplash.com/de/fotos/eine-person-die-uber-eine-brucke-uber-ein-gewasser-geht-tkuidfuPYUc',
+            image: {
+                public_id: walkingImg.public_id,
+                width: walkingImg.width,
+                height: walkingImg.height,
+            },
+            alt: 'Walking in nature',
+            pageLink: '/activities/walking',
+        },
+        {
+            title: t('yoga.title'),
+            description: t('yoga.description'),
+            image: {
+                public_id: yogaImg.public_id,
+                width: yogaImg.width,
+                height: yogaImg.height,
+            },
+            alt: 'Girl doing yoga on a private jetty',
+            pageLink: '/activities/yoga',
+        },
+        {
+            title: t('rowing.title'),
+            description: t('rowing.description'),
+            image: {
+                public_id: boatImg.public_id,
+                width: boatImg.width,
+                height: boatImg.height,
+            },
+            alt: 'The house own rowing boat in the evening sun',
+            pageLink: '/activities/rowing',
         },
     ];
 
@@ -66,34 +124,39 @@ export default function Activities() {
 
                     {/* Right: Slider Section */}
                     <div className="lg:order-2">
-                        <Slider {...sliderSettings}>
-                            {activities.map((activity) => (
-                                <div key={activity.title} className="relative">
-                                    <Image
-                                        src={activity.imageUrl}
-                                        alt={activity.imageAlt}
-                                        width={1200}
-                                        height={800}
-                                        className="rounded-lg shadow-lg"
-                                        style={{objectFit: 'cover'}}
+                        {images && images.length > 0 && (
+                            <Slider {...sliderSettings}>
+                                {activities.map((activity, index) => (
+                                    <div key={activity.title}
+                                         role="group"
+                                         aria-roledescription="slide"
+                                         aria-label={activity.title}
+                                         className="relative h-80"
+                                         style={{
+                                             height: index % 3 === 0 ? '300px' : '150px',
+                                         }}>
+                                        <Image
+                                            loader={cloudinaryLoader}
+                                            src={activity.image.public_id}
+                                            alt={activity.alt}
+                                            fill
+                                            className="rounded-lg shadow-lg object-cover"
+                                        />
 
-                                    />
+                                        {/* Image Caption */}
+                                        <div
+                                            className="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white p-2 rounded-md">
+                                            <h3 className="text-xl font-semibold">{activity.title}</h3>
+                                            <p className="text-sm">{activity.description}</p>
+                                        </div>
 
-                                    {/* Image Caption */}
-                                    <div
-                                        className="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white p-2 rounded-md">
-                                        <p className="text-xl font-semibold">{activity.title}</p>
-                                        <p className="text-sm">{activity.description}</p>
+                                        <Link href={activity.pageLink}
+                                              className="absolute inset-0 z-10"
+                                              aria-label={activity.title}/>
                                     </div>
-
-                                    {/* Image Attribution */}
-                                    <p className="mt-2 text-xs text-center text-gray-500">
-                                        Photo by <Link href={activity.link} target="_blank" rel="noopener noreferrer"
-                                                       className="underline">{activity.author}</Link> on Unsplash
-                                    </p>
-                                </div>
-                            ))}
-                        </Slider>
+                                ))}
+                            </Slider>
+                        )}
                     </div>
                 </div>
             </div>
