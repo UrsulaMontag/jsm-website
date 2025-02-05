@@ -16,7 +16,7 @@ export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
     return (
         <section
             aria-labelledby="about-house-heading"
-            className="py-16 bg-neutral-beige dark:bg-dark-bg text-dark-text dark:text-dark-text"
+            className="py-16 bg-neutral-beige/90 dark:bg-dark-bg/90 backdrop-blur-sm text-dark-text dark:text-dark-text"
         >
             <div className="container mx-auto px-4 lg:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

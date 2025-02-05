@@ -26,10 +26,12 @@ export default async function RootLayout({
     return (
         <ThemeProvider>
             <html lang={locale as string || 'de'}>
-            <body
-                className={
-                    `${body.className} antialiased min-h-screen flex flex-col bg-light-bg bg-opacity-80 text-light-text`
-                }>
+            <body className={`
+    ${body.className}
+    min-h-screen 
+    bg-sunset-gradient dark:bg-sunset-gradient-dark
+    transition-colors duration-300
+`}>
             <ThemeWrapper>
                 <NextIntlClientProvider messages={messages || undefined}>
                     <div className="flex flex-col gap-y-8 lg:gap-10 min-h-screen w-full"

@@ -13,17 +13,22 @@ export default function Hero() {
         <section aria-labelledby="hero-heading" data-testid="hero"
                  className="relative h-screen bg-sunset-gradient flex flex-col justify-center items-center">
             {/* Background Image */}
-            <Image
-                loader={cloudinaryLoader}
-                src={`/Ferienhaus_Steinhude/q5rmzqeq9e5wp1d61tm3`}
-                fill
-                alt="Hero image of sunset over Steinhuder Meer"
-                priority
-                fetchPriority={'high'}
-                quality={90}
-                className="absolute inset-0 w-full h-full object-cover"
-                data-testid="hero-image"
-            />
+            <div className="absolute inset-0">
+                <Image
+                    loader={cloudinaryLoader}
+                    src={`/Ferienhaus_Steinhude/q5rmzqeq9e5wp1d61tm3`}
+                    fill
+                    alt="Hero image of sunset over Steinhuder Meer"
+                    priority
+                    fetchPriority={'high'}
+                    quality={90}
+                    className="object-cover"
+                    data-testid="hero-image"
+                />
+                <div
+                    className="absolute inset-0 bg-gradient-to-b from-sunset-orange-light/40 via-sunset-orange/30 to-sunset-orange-dark/40 dark:from-shadow-black/50 dark:via-amber-glow/30 dark:to-sunset-orange/40"/>
+            </div>
+
 
             {/* Content */}
             <div className="relative z-10 text-center px-4">

@@ -55,9 +55,10 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
     return (
         <section
             aria-labelledby="location-highlight-heading"
-            className="relative py-24 bg-lake-blue/10 dark:bg-dark-bg/80 overflow-hidden"
+            className="relative py-16 bg-neutral-beige/90 dark:bg-dark-bg/90 backdrop-blur-sm overflow-hidden"
         >
-            <div className="container mx-auto px-4 lg:px-12">
+            <div className="container mx-auto px-4 lg:px-12
+">
                 {/* Text Content */}
                 <div className="text-center mb-16 max-w-3xl mx-auto">
                     <h2
@@ -190,7 +191,7 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
                     {['view', 'access', 'privacy'].map((feature) => (
                         <div
                             key={feature}
-                            className="p-8 bg-white/90 dark:bg-dark-bg/90 backdrop-blur-sm rounded-2xl shadow-lg"
+                            className="p-8  bg-sunset-gradient dark:bg-sunset-gradient-dark rounded-2xl shadow-lg"
                         >
                             <h3 className="text-2xl font-bold text-lake-blue dark:text-dark-highlight mb-4">
                                 {t(`features.${feature}.title`)}
