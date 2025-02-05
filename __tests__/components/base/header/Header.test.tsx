@@ -65,15 +65,15 @@ describe('Header', () => {
         renderHeader();
 
         const menuButton = screen.getByTestId('menu-button');
-        fireEvent.click(menuButton);
-        const navElements = screen.getAllByRole('navigation');
-        const mobileNav = navElements.find(nav => nav.querySelector('ul'));
-        if (mobileNav) {
-            expect(mobileNav.querySelector('ul')).toHaveClass('block');
+        const mobileMenu = screen.getByRole('navigation').querySelector('.md\\:hidden > div'); // Target the mobile menu container
 
-            fireEvent.click(menuButton);
-            expect(mobileNav.querySelector('ul')).toHaveClass('hidden');
-        }
+        expect(mobileMenu).toHaveClass('hidden');
+
+        fireEvent.click(menuButton);
+        expect(mobileMenu).toHaveClass('block');
+
+        fireEvent.click(menuButton);
+        expect(mobileMenu).toHaveClass('hidden');
     });
 
     it('renders navigation links with correct hrefs', () => {
@@ -119,7 +119,6 @@ describe('Header', () => {
         expect(menuButton).toHaveAttribute('aria-label', 'Toggle menu');
         expect(menuButton).toHaveAttribute('aria-expanded', 'false'); // Initially closed
 
-        // Open the mobile menu
         fireEvent.click(menuButton);
         expect(menuButton).toHaveAttribute('aria-expanded', 'true'); // Now open
     });
