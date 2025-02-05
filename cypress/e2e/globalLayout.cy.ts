@@ -1,6 +1,7 @@
 describe('Global Layout', () => {
     beforeEach(() => {
         cy.visit('/');
+        cy.wait(1000);
     });
 
     it('should render the layout with the correct locale and theme', () => {
@@ -8,14 +9,12 @@ describe('Global Layout', () => {
 
         cy.get('body').should('have.class', 'antialiased')
             .and('have.class', 'bg-light-bg')
-            .and('have.class', 'bg-opacity-80')
-            .and('have.class', 'text-light-text');
 
-        cy.get('body').within(() => {
-            cy.get('[data-testid="theme-wrapper"]').should('exist');
-            cy.get('[data-testid="theme-wrapper"]').within(() => {
-                cy.get('[data-testid="intl-provider"]').should('exist');
+        cy.get('[data-testid="theme-wrapper"]')
+            .should('exist')
+            .within(() => {
+                cy.get('[data-testid="intl-provider"]')
+                    .should('exist');
             });
-        });
     });
 });

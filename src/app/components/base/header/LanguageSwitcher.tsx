@@ -10,6 +10,7 @@ export default function LanguageSwitcher() {
 
     return (
         <div
+            data-testid="language-switcher"
             className="flex text-sunset-orange dark:text-dark-highlight focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-dark-highlight">
             <LocaleSwitcherSelect defaultValue={locale}
                                   label={t("label", {default: "Sprache wechseln"})}>
