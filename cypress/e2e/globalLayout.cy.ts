@@ -8,7 +8,7 @@ describe('Global Layout', () => {
         cy.get('html').should('have.attr', 'lang', 'de');
 
         cy.get('body').should('have.class', 'antialiased')
-            .and('have.class', 'bg-light-bg')
+            .and('have.class', 'bg-sunset-gradient')
 
         cy.get('[data-testid="theme-wrapper"]')
             .should('exist')

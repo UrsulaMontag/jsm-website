@@ -126,8 +126,8 @@
   "LanguageSwitcher": {
     "label": "Change language",
     "locale": {
-      "de": "🇩🇪 Deutsch",
-      "en": "🇺🇸 Englisch"
+      "de": "🇩🇪 DE",
+      "en": "🇺🇸 EN"
     }
   },
   "Imprint": {

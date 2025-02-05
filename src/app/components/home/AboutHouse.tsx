@@ -16,29 +16,27 @@ export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
     return (
         <section
             aria-labelledby="about-house-heading"
-            className="py-16 bg-neutral-beige/90 dark:bg-dark-bg/90 backdrop-blur-sm text-dark-text dark:text-dark-text"
+            className="py-20 bg-neutral-beige/90 dark:bg-dark-bg/90 backdrop-blur-sm"
         >
             <div className="container mx-auto px-4 lg:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-                    {/* Text Section */}
-                    <div className="text-center lg:text-left">
+                    <div className="text-center lg:text-left space-y-6">
                         <h2
                             id="about-house-heading"
-                            className="text-4xl md:text-5xl font-bold text-lake-blue dark:text-dark-highlight mb-4"
+                            className="text-4xl md:text-5xl font-bold text-lake-blue dark:text-dark-highlight mb-4 bg-clip-text bg-gradient-to-r from-sunset-orange to-lake-blue dark:from-amber-glow dark:to-dark-highlight"
                         >
                             {t('about.title')}
                         </h2>
 
                         <p aria-label={t('about.description')}
-                           className="text-lg md:text-xl text-lake-blue dark:text-dark-text mb-6"
+                           className="text-lg md:text-xl text-lake-blue dark:text-dark-text mb-6 leading-relaxed"
                         >
                             {t('about.description')}
                         </p>
 
                         <Link aria-label="Explore the house gallery"
                               href="/gallery"
-                              className="inline-block bg-sunset-orange hover:bg-sunset-orange-dark text-white text-lg py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"
+                              className="inline-block bg-sunset-orange hover:bg-sunset-orange-dark text-white text-lg py-3 px-8 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
                         >
                             {t('about.cta')}
                         </Link>
@@ -49,7 +47,7 @@ export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
                         {images.map((image, index) => (
                             <div data-testid="about-house-image"
                                  key={key(index)}
-                                 className={`relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform transition-transform hover:scale-110`}
+                                 className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 group"
                                  style={{
                                      gridRow: index % 3 === 0 ? 'span 2' : 'span 1',
                                      height: index % 3 === 0 ? '300px' : '150px',
@@ -60,8 +58,10 @@ export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
                                     src={image.public_id}
                                     fill
                                     alt="Panoramablick house view"
-                                    className="object-cover w-full h-full"
+                                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
                                 />
+                                <div
+                                    className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"/>
                             </div>
                         ))}
                     </div>

@@ -11,33 +11,24 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row justify-between items-center md:items-start md:space-x-8">
 
                     {/* Navigation Links */}
-                    <nav aria-label="Footer navigation" className="text-sm mb-4 md:mb-0">
-                        <ul className="flex flex-wrap justify-center md:justify-start space-x-4">
-                            <li>
-                                <Link href="/" className="hover:underline">
-                                    {t('nav.home')}
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/the-house" className="hover:underline">
-                                    {t('nav.theHouse')}
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/gallery" className="hover:underline">
-                                    {t('nav.gallery')}
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/activities" className="hover:underline">
-                                    {t('nav.activities')}
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/contact" className="hover:underline">
-                                    {t('nav.contact')}
-                                </Link>
-                            </li>
+                    <nav aria-label="Footer navigation" className="text-sm">
+                        <ul className="flex gap-2">
+                            {[
+                                {path: '/' as const, key: 'home'},
+                                {path: '/the-house' as const, key: 'theHouse'},
+                                {path: '/gallery' as const, key: 'gallery'},
+                                {path: '/activities' as const, key: 'activities'},
+                                {path: '/contact' as const, key: 'contact'}
+                            ].map(({path, key}) => (
+                                <li key={key}>
+                                    <Link
+                                        href={path}
+                                        className="hover:text-sunset-orange dark:hover:text-dark-highlight transition-colors"
+                                    >
+                                        {t(`nav.${key}`)}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </nav>
 
