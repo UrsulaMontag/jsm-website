@@ -1,6 +1,6 @@
 'use client';
 
-import {useTheme} from "@/app/helper/ThemeProvider"; // Importiere den ThemeContext
+import {useTheme} from "@/app/helper/ThemeProvider";
 import {ReactNode} from "react";
 
 const ThemeWrapper = ({children}: { children: ReactNode; }) => {
