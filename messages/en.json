@@ -129,5 +129,10 @@
       "de": "🇩🇪 DE",
       "en": "🇺🇸 EN"
     }
+  },
+  "ThemeToggle": {
+    "dark": "dark",
+    "light": "light",
+    "label": "Toggle theme"
   }
 }

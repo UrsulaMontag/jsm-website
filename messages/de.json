@@ -138,5 +138,10 @@
     "contact": "Kontakt",
     "legalInfo": "Rechtliche Informationen",
     "legalDetails": "Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV: Ferienhaus Panoramablick"
+  },
+  "ThemeToggle": {
+    "dark": "dunkel",
+    "light": "hell",
+    "label": "Thema wechseln"
   }
 }
