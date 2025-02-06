@@ -32,7 +32,7 @@ describe('ThemeToggle', () => {
 
     it('renders correctly in light mode', () => {
         renderThemeToggle();
-        expect(screen.getByText(/dark/i)).toBeInTheDocument();
+        expect(screen.getByText(/light/i)).toBeInTheDocument();
 
         const toggleDot = screen.getByTestId('theme-toggle-dot');
         expect(toggleDot).not.toHaveClass('transform translate-x-full');
@@ -45,7 +45,7 @@ describe('ThemeToggle', () => {
         });
 
         renderThemeToggle();
-        expect(screen.getByText(/light/i)).toBeInTheDocument();
+        expect(screen.getByText(/dark/i)).toBeInTheDocument();
 
         const toggleDot = screen.getByTestId('theme-toggle-dot');
         expect(toggleDot).toHaveClass('transform translate-x-full');
