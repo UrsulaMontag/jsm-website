@@ -1,6 +1,5 @@
 describe('ThemeToggle Component', () => {
     beforeEach(() => {
-        // Mock translations
         cy.intercept('/_next/static/locales/de/common.json', {
             "ThemeToggle": {
                 "dark": "dunkel",
@@ -8,7 +7,7 @@ describe('ThemeToggle Component', () => {
             }
         });
 
-        cy.visit('/de'); // Explicitly visit German version
+        cy.visit('/de');
         cy.clearLocalStorage();
         cy.get('[data-testid="theme-toggle"]', {timeout: 1000}).should('exist');
     });

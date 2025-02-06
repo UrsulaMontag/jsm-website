@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import {useTranslations} from 'next-intl';
+import ThemeToggle from "@/app/helper/ThemeToggle";
 
 export default function Footer() {
     const t = useTranslations('Footer');
@@ -45,6 +46,11 @@ export default function Footer() {
                         <p><Link href="/contact" className="underline">{t('imprint.link')}</Link></p>
                         <span></span>
                     </div>
+                    <div className="text-center md:text-left text-sm">
+
+                        <ThemeToggle/>
+                    </div>
+
                 </div>
 
 

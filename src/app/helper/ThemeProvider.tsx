@@ -23,7 +23,6 @@ export const ThemeProvider = ({children}: { children: ReactNode; }) => {
     const toggleDarkMode = useCallback(() => {
         setIsDarkMode(prev => {
             const newTheme = !prev;
-            // MUST use 'dark'/'light' strings in localStorage
             localStorage.setItem('theme', newTheme ? 'dark' : 'light');
             return newTheme;
         });

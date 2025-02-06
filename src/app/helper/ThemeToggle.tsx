@@ -6,14 +6,13 @@ import {useTranslations} from "next-intl";
 const ThemeToggle = () => {
     const {isDarkMode, toggleDarkMode} = useTheme();
     const t = useTranslations('ThemeToggle');
-    console.log('Current theme:', !isDarkMode ? 'dark' : 'light');
 
     return (
         <label
             className="flex items-center cursor-pointer text-xs"
             data-testid="theme-toggle"
         >
-            <span className="mr-3 text-gray-700 dark:text-gray-300">
+            <span className="mr-3 text-lake-blue dark:text-dark-highlight">
                 {isDarkMode ? `${t('dark')}` : `${t('light')}`}
             </span>
             <div className="relative">
