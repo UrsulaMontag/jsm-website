@@ -7,9 +7,15 @@ describe('ThemeToggle Component', () => {
             }
         });
 
-        cy.visit('/de');
+
+        cy.visit('/de', {
+            onBeforeLoad(win) {
+                //@ts-expect-error/cypress intern types
+                win.localStorage.setItem('theme', 'dark');
+            }
+        });
         cy.clearLocalStorage();
-        cy.get('[data-testid="theme-toggle"]', {timeout: 1000}).should('exist');
+        cy.get('[data-testid="theme-toggle"]').should('exist');
     });
 
     it('should display correct initial text', () => {
@@ -64,17 +70,17 @@ describe('ThemeToggle Component', () => {
         cy.get('html').should('have.class', 'dark');
 
         cy.get('[data-testid="theme-toggle"]').click();
-        cy.get('html', {timeout: 1000}).should('not.have.class', 'dark');
+        cy.get('html').should('not.have.class', 'dark');
 
         cy.get('[data-testid="theme-toggle"]').click();
-        cy.get('html', {timeout: 10000}).should('have.class', 'dark');
+        cy.get('html').should('have.class', 'dark');
     });
 
     it('should maintain theme preference after page reload', () => {
         cy.get('[data-testid="theme-toggle"]').click();
 
         cy.reload();
-        cy.get('[data-testid="theme-toggle"]', {timeout: 1000}).should('exist');
+        cy.get('[data-testid="theme-toggle"]').should('exist');
         cy.get('[data-testid="theme-toggle"] span').should('contain', 'hell');
         cy.get('html').should('not.have.class', 'dark');
     });
