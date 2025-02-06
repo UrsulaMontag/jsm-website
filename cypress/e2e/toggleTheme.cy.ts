@@ -1,72 +1,131 @@
 describe('ThemeToggle Component', () => {
-    beforeEach(() => {
-        cy.intercept('/_next/static/locales/de/common.json', {
-            "ThemeToggle": {
-                "dark": "dunkel",
-                "light": "hell"
-            }
+    const testThemeToggle = (initialTheme: 'dark' | 'light') => {
+        it(`should toggle correctly from ${initialTheme} theme`, () => {
+            cy.get('[data-testid="theme-toggle"]')
+                .should('exist')
+                .find('span')
+                .should('contain', initialTheme === 'dark' ? 'dunkel' : 'hell');
+
+            cy.get('html').should(initialTheme === 'dark' ? 'have.class' : 'not.have.class', 'dark');
+
+            cy.get('[data-testid="theme-toggle"]').click();
+            cy.get('[data-testid="theme-toggle"] span')
+                .should('contain', initialTheme === 'dark' ? 'hell' : 'dunkel');
+            cy.get('html').should(initialTheme === 'dark' ? 'not.have.class' : 'have.class', 'dark');
+
+            cy.get('[data-testid="theme-toggle"]').click();
+            cy.get('[data-testid="theme-toggle"] span')
+                .should('contain', initialTheme === 'dark' ? 'dunkel' : 'hell');
+            cy.get('html').should(initialTheme === 'dark' ? 'have.class' : 'not.have.class', 'dark');
+        });
+    };
+
+    describe('with dark theme preference', () => {
+        beforeEach(() => {
+            cy.clearLocalStorage().then(() => {
+                cy.visit('/de', {
+                    onBeforeLoad: ((win: Cypress.AUTWindow) => {
+                        win.localStorage.setItem('theme', 'dark');
+                    }) as Cypress.VisitOptions['onBeforeLoad']
+                });
+            });
+            cy.get('[data-testid="theme-toggle"]').should('exist');
+            cy.wait(1000);
         });
 
+        testThemeToggle('dark');
+    });
 
-        cy.visit('/de', {
-            onBeforeLoad(win) {
-                //@ts-expect-error/cypress intern types
-                win.localStorage.setItem('theme', 'dark');
-            }
+    describe('with light theme preference', () => {
+        beforeEach(() => {
+            cy.clearLocalStorage().then(() => {
+                cy.visit('/de', {
+                    onBeforeLoad: ((win: Cypress.AUTWindow) => {
+                        win.localStorage.setItem('theme', 'light');
+                    }) as Cypress.VisitOptions['onBeforeLoad']
+                });
+            });
+            cy.get('[data-testid="theme-toggle"]').should('exist');
+            cy.wait(1000);
         });
-        cy.clearLocalStorage();
-        cy.get('[data-testid="theme-toggle"]').should('exist');
+
+        testThemeToggle('light');
     });
 
-    it('should display correct initial text', () => {
-        cy.get('[data-testid="theme-toggle"] span')
-            .should('contain', 'dunkel');
-    });
+    describe('system preference detection', () => {
+        ['dark', 'light'].forEach((preference) => {
+            it('should respect system preference', () => {
+                cy.clearLocalStorage().then(() => {
+                    cy.visit('/de', {
+                        onBeforeLoad: ((win: Cypress.AUTWindow) => {
+                            const originalMatchMedia = win.matchMedia;
+                            win.matchMedia = (query) => {
+                                if (query === '(prefers-color-scheme: dark)') {
+                                    return {
+                                        matches: preference === 'dark',
+                                        media: query,
+                                        onchange: null,
+                                        addListener: () => {
+                                        },
+                                        removeListener: () => {
+                                        },
+                                        addEventListener: () => {
+                                        },
+                                        removeEventListener: () => {
+                                        },
+                                        dispatchEvent: () => true,
+                                    };
+                                }
+                                return originalMatchMedia(query);
+                            };
+                        }) as Cypress.VisitOptions['onBeforeLoad']
+                    });
+                });
 
-    it('should toggle text between dunkel and hell', () => {
-        cy.get('[data-testid="theme-toggle"] span')
-            .should('contain', 'dunkel');
+                const expectedTheme = preference === 'dark' ? 'dunkel' : 'hell';
+                cy.get('[data-testid="theme-toggle"]',)
+                    .should('exist')
+                    .find('span')
+                    .should('contain', expectedTheme);
 
-        cy.get('[data-testid="theme-toggle"]').click();
-        cy.get('[data-testid="theme-toggle"] span')
-            .should('contain', 'hell');
-
-        cy.get('[data-testid="theme-toggle"]').click();
-        cy.get('[data-testid="theme-toggle"] span')
-            .should('contain', 'dunkel');
+                cy.get('html').should(preference === 'dark' ? 'have.class' : 'not.have.class', 'dark');
+            });
+        });
     });
 
     it('should persist theme preference in localStorage', () => {
-        cy.window().its('localStorage.theme').should('be.undefined');
-
-        cy.get('[data-testid="theme-toggle"]').click();
-        cy.window().its('localStorage.theme').should('eq', 'light');
-
-        cy.get('[data-testid="theme-toggle"]').click();
-        cy.window().its('localStorage.theme').should('eq', 'dark');
-    });
-
-    it('should respect system preference when no localStorage value exists', () => {
-        cy.window().then((win: Window) => {
-            cy.stub(win, 'matchMedia')
-                .withArgs('(prefers-color-scheme: dark)')
-                .returns({
-                    matches: true,
-                    addListener: () => {
-                    },
-                    removeListener: () => {
-                    },
-                });
+        cy.clearLocalStorage().then(() => {
+            cy.visit('/de', {
+                onBeforeLoad: ((win: Cypress.AUTWindow) => {
+                    win.localStorage.setItem('theme', 'dark');
+                }) as Cypress.VisitOptions['onBeforeLoad']
+            });
         });
 
-        cy.reload();
-        cy.get('[data-testid="theme-toggle"]', {timeout: 1000}).should('exist');
+        cy.window().then((win: Cypress.AUTWindow) => {
+            expect(win.localStorage.getItem('theme')).to.equal('dark');
+        });
 
-        cy.get('html').should('have.class', 'dark');
-        cy.get('[data-testid="theme-toggle"] span').should('contain', 'dunkel');
+        cy.get('[data-testid="theme-toggle"]').click();
+        cy.window().then((win: Cypress.AUTWindow) => {
+            expect(win.localStorage.getItem('theme')).to.equal('light');
+        });
+
+        cy.get('[data-testid="theme-toggle"]').click();
+        cy.window().then((win: Cypress.AUTWindow) => {
+            expect(win.localStorage.getItem('theme')).to.equal('dark');
+        });
     });
 
     it('should update the application theme when toggled', () => {
+        cy.clearLocalStorage().then(() => {
+            cy.visit('/de', {
+                onBeforeLoad: ((win: Cypress.AUTWindow) => {
+                    win.localStorage.setItem('theme', 'dark');
+                }) as Cypress.VisitOptions['onBeforeLoad']
+            });
+        });
+
         cy.get('html').should('have.class', 'dark');
 
         cy.get('[data-testid="theme-toggle"]').click();
@@ -77,10 +136,23 @@ describe('ThemeToggle Component', () => {
     });
 
     it('should maintain theme preference after page reload', () => {
+        cy.clearLocalStorage().then(() => {
+            cy.visit('/de', {
+                onBeforeLoad: ((win: Cypress.AUTWindow) => {
+                    win.localStorage.setItem('theme', 'dark');
+                }) as Cypress.VisitOptions['onBeforeLoad']
+            });
+        });
+
         cy.get('[data-testid="theme-toggle"]').click();
+        cy.window().then((win: Cypress.AUTWindow) => {
+            expect(win.localStorage.getItem('theme')).to.equal('light');
+        });
 
         cy.reload();
         cy.get('[data-testid="theme-toggle"]').should('exist');
+        cy.wait(1000);
+
         cy.get('[data-testid="theme-toggle"] span').should('contain', 'hell');
         cy.get('html').should('not.have.class', 'dark');
     });
