@@ -30,11 +30,14 @@ export default function Home() {
                 <meta property="og:url" content="https://jsm-website-two.vercel.app"/>
                 <link rel="canonical" href="https://jsm-website-two.vercel.app"/>
             </Head>
-            <Hero/>
-            <LocationHighlight images={lakeImages}/>
-            <AboutHouse images={houseImages}/>
-            <Highlights/>
-            <Activities images={activityImages}/>
+            <div className="space-y-8 lg:space-y-10 ">
+                <Hero/>
+                <LocationHighlight images={lakeImages}/>
+                <AboutHouse images={houseImages}/>
+                <Highlights/>
+                <Activities images={activityImages}/>
+            </div>
+
 
         </>
     );
