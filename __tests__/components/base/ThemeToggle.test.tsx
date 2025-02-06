@@ -1,10 +1,10 @@
 import {render, screen, fireEvent} from '@testing-library/react';
-import ThemeToggle from '../../src/app/helper/ThemeToggle';
-import {useTheme} from '@/app/helper/ThemeProvider';
+import ThemeToggle from '@/app/components/base/ThemeToggle';
+import {useTheme} from '@/app/components/base/ThemeProvider';
 import {NextIntlClientProvider} from 'next-intl';
-import enMessages from '@/../messages/en.json';
+import enMessages from '../../../messages/en.json';
 // Mock the useTheme hook
-jest.mock('@/app/helper/ThemeProvider');
+jest.mock('@/app/components/base/ThemeProvider');
 
 const mockUseTheme = useTheme as jest.MockedFunction<typeof useTheme>;
 

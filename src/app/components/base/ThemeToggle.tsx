@@ -1,6 +1,6 @@
 'use client';
 
-import {useTheme} from "@/app/helper/ThemeProvider";
+import {useTheme} from "@/app/components/base/ThemeProvider";
 import {useTranslations} from "next-intl";
 
 const ThemeToggle = () => {

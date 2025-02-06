@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import {renderHook, act} from '@testing-library/react';
-import {ThemeProvider, useTheme} from '@/app/helper/ThemeProvider';
+import {ThemeProvider, useTheme} from '@/app/components/base/ThemeProvider';
 import {ReactNode} from "react";
 
 beforeAll(() => {
