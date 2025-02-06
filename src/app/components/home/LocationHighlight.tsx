@@ -52,6 +52,11 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
         return () => window.removeEventListener('keydown', handleKeydown);
     }, [handleNavigation, selectedImage]);
 
+    const clickHandler = (e: React.MouseEvent, img: ImageType) => {
+        e.stopPropagation();
+        setSelectedImage(img);
+    }
+
     return (
         <section
             aria-labelledby="location-highlight-heading"
@@ -75,12 +80,10 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
                 {/* Staggered Image Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-[800px]">
                     {/* Main Panorama */}
-                    <div
+                    <button
                         className="md:col-span-8 h-full relative group overflow-hidden rounded-2xl shadow-2xl cursor-zoom-in"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedImage(images[0]);
-                        }}>
+                        onClick={(e) => clickHandler(e, images[0])}
+                    >
                         <Image
                             loader={cloudinaryLoader}
                             src={images[0]?.public_id || 'default/fallback_image'}
@@ -92,18 +95,15 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
                         />
                         <div
                             className="absolute inset-0 bg-gradient-to-t from-lake-blue/30 to-transparent dark:from-dark-bg/40"/>
-                    </div>
+                    </button>
 
                     {/* Secondary Images Stack */}
                     <div className="md:col-span-4 grid grid-rows-2 gap-6 h-full">
                         {images.slice(1, 3).map((image) => (
-                            <div
+                            <button
                                 key={image.public_id}
                                 className="relative group overflow-hidden rounded-2xl shadow-2xl cursor-zoom-in"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setSelectedImage(image);
-                                }}
+                                onClick={(e) => clickHandler(e, image)}
                             >
                                 <Image
                                     loader={cloudinaryLoader}
@@ -115,7 +115,7 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
                                 />
                                 <div
                                     className="absolute inset-0 bg-gradient-to-t from-lake-blue/30 to-transparent dark:from-dark-bg/40"/>
-                            </div>
+                            </button>
                         ))}
                     </div>
                 </div>
@@ -172,10 +172,7 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
 
                                 {/* Close Button */}
                                 <button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setSelectedImage(null);
-                                    }}
+                                    onClick={(e) => clickHandler(e, null)}
                                     className="absolute top-4 right-4 text-white text-2xl p-2 hover:text-sunset-orange transition-colors z-50"
                                     aria-label={t('close')}
                                 >

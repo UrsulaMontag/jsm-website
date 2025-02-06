@@ -123,8 +123,8 @@ describe('Home', () => {
         const activitiesHeading = screen.getByRole('heading', {name: /Experience Steinhuder Meer/i, level: 2});
         expect(activitiesHeading).toBeInTheDocument();
 
-        const prevButton = screen.getByRole('button', {name: /previous slide/i});
-        const nextButton = screen.getByRole('button', {name: /next slide/i});
+        const prevButton = screen.getByTestId('prev-arrow');
+        const nextButton = screen.getByTestId('next-arrow');
         expect(prevButton).toBeInTheDocument();
         expect(nextButton).toBeInTheDocument();
 

@@ -1,8 +1,6 @@
 'use client';
-
-import {useEffect} from 'react';
+import {useEffect, ReactNode} from 'react';
 import {useTheme} from "@/app/components/base/ThemeProvider";
-import {ReactNode} from "react";
 
 const ThemeWrapper = ({children}: { children: ReactNode; }) => {
     const {isDarkMode} = useTheme();

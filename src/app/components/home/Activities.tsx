@@ -23,7 +23,7 @@ export default function Activities({images}: Readonly<ActivityProps>) {
         slidesToScroll: 1,
         prevArrow: (
             <div>
-                <button className="next-slick-arrow rotate-180">
+                <button className="next-slick-arrow rotate-180" data-testid="prev-arrow">
                     <svg xmlns="http://www.w3.org/2000/svg" stroke="black" height="24" viewBox="0 -960 960 960"
                          width="24">
                         <path
@@ -34,13 +34,13 @@ export default function Activities({images}: Readonly<ActivityProps>) {
         ),
         nextArrow: (
             <div>
-                <div className="next-slick-arrow">
+                <button className="next-slick-arrow" data-testid="next-arrow">
                     <svg xmlns="http://www.w3.org/2000/svg" stroke="black" height="24" viewBox="0 -960 960 960"
                          width="24">
                         <path
                             d="m242-200 200-280-200-280h98l200 280-200 280h-98Zm238 0 200-280-200-280h98l200 280-200 280h-98Z"/>
                     </svg>
-                </div>
+                </button>
             </div>
         ),
     };

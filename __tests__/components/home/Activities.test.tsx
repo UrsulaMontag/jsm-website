@@ -81,8 +81,8 @@ describe('Activities Component', () => {
     it('handles navigation controls correctly', async () => {
         renderComponent();
 
-        const prevButton = screen.getByText(/previous/i);
-        const nextButton = screen.getByLabelText(/next/i);
+        const prevButton = screen.getByTestId('prev-arrow');
+        const nextButton = screen.getByTestId('next-arrow');
 
         expect(prevButton).toBeInTheDocument();
         expect(nextButton).toBeInTheDocument();

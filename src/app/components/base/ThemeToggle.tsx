@@ -19,7 +19,6 @@ const ThemeToggle = () => {
                 <input
                     data-testid="theme-toggle-input"
                     type="checkbox"
-                    aria-hidden="true"
                     style={{display: 'none'}}
                     checked={isDarkMode}
                     onChange={toggleDarkMode}
