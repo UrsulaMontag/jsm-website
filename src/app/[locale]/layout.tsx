@@ -8,6 +8,7 @@ import ThemeWrapper from '../helper/ThemeWrapper';
 import {body} from "../../../styles/fonts";
 import Header from "@/app/components/base/header/Header";
 import Footer from "@/app/components/base/Footer";
+import SunsetFloatingOrbs from "../../../styles/SunsetFloatingOrbs";
 
 type LayoutProps = {
     children: ReactNode;
@@ -27,12 +28,11 @@ export default async function RootLayout({
         <ThemeProvider>
             <html lang={locale as string || 'de'}>
             <body
-                className={
-                    `${body.className} antialiased min-h-screen flex flex-col bg-light-bg bg-opacity-80 text-light-text`
-                }>
+                className={`${body.className} min-h-screen bg-sunset-gradient dark:bg-sunset-gradient-dark transition-colors duration-300 antialiased`}>
+            <SunsetFloatingOrbs/>
             <ThemeWrapper>
                 <NextIntlClientProvider messages={messages || undefined}>
-                    <div className="flex flex-col gap-y-8 lg:gap-10 min-h-screen w-full"
+                    <div className="flex flex-col min-h-screen w-full"
                          data-testid="intl-provider">
                         <Header/>
                         {children}

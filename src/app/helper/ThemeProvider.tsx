@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, useState, createContext, useContext, ReactNode, useMemo} from 'react';
+import {useEffect, useState, createContext, useContext, ReactNode, useMemo, useCallback} from 'react';
 
 const ThemeContext = createContext({
     isDarkMode: false, toggleDarkMode: () => {
@@ -20,13 +20,13 @@ export const ThemeProvider = ({children}: { children: ReactNode; }) => {
         }
     }, []);
 
-    const toggleDarkMode = () => {
+    const toggleDarkMode = useCallback(() => {
         setIsDarkMode(prev => {
             const newTheme = !prev;
             localStorage.setItem('theme', newTheme ? 'dark' : 'light');
             return newTheme;
         });
-    };
+    }, []);
 
     const contextValue = useMemo(() => ({isDarkMode, toggleDarkMode}), [isDarkMode]);
 

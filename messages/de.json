@@ -39,6 +39,60 @@
         "title": "Hunde Willkommen",
         "description": "Bringen Sie Ihre vierbeinigen Freunde für einen unvergesslichen Aufenthalt mit."
       }
+    },
+    "location": {
+      "title": "Wohnen unmittelbar am See",
+      "description": "Erleben Sie die einzigartige Verbindung zur Natur mit privatem Wasserzugang und atemberaubenden Ausblicken.",
+      "features": {
+        "view": {
+          "title": "Panoramablick",
+          "description": "Ungestörter Ausblick auf den See aus nahezu jedem Winkel des Anwesens"
+        },
+        "access": {
+          "title": "Privater Wasserzugang",
+          "description": "Direkter Zugang zum See über Ihren eigenen Steg und Ihr Ruderboot"
+        },
+        "privacy": {
+          "title": "Private Lage",
+          "description": "Genießen Sie Privatsphäre umgeben von Natur"
+        }
+      },
+      "close": "Dialog schließen",
+      "previous": "Vorheriges Bild",
+      "next": "Nächstes Bild",
+      "fallbackAlt": "Bild des Steinhuder Meers"
+    },
+    "activities": {
+      "title": "Erleben Sie das Steinhuder Meer",
+      "description": "Genießen Sie die Vielfalt der Aktivitäten in der Nähe des Ferienhauses Panoramablick. Vom Rudern bis zur Vogelbeobachtung – für jeden ist etwas dabei.",
+      "rowing": {
+        "title": "Rudern",
+        "description": "Nehmen Sie das Ruderboot auf den See."
+      },
+      "yoga": {
+        "title": "Yoga am See",
+        "description": "Genießen Sie eine Yogastunde auf dem privaten Steg, umgeben von Natur."
+      },
+      "cycling": {
+        "title": "Radfahren",
+        "description": "Erkunden Sie malerische Radwege."
+      },
+      "fishing": {
+        "title": "Angeln",
+        "description": "Angeln Sie direkt vom privaten Steg."
+      },
+      "walking": {
+        "title": "Spaziergänge",
+        "description": "Spazieren Sie entlang der ruhigen Ufer des Steinhuder Meers."
+      },
+      "birdwatching": {
+        "title": "Vogelbeobachtung",
+        "description": "Beobachten Sie die heimische Tierwelt in ihrer natürlichen Umgebung."
+      },
+      "dining": {
+        "title": "Gastronomie",
+        "description": "Entdecken Sie nahegelegene Restaurants mit Seeblick."
+      }
     }
   },
   "Header": {
@@ -72,8 +126,8 @@
   "LanguageSwitcher": {
     "label": "Change language",
     "locale": {
-      "de": "🇩🇪 Deutsch",
-      "en": "🇺🇸 Englisch"
+      "de": "🇩🇪 DE",
+      "en": "🇺🇸 EN"
     }
   },
   "Imprint": {
@@ -84,5 +138,10 @@
     "contact": "Kontakt",
     "legalInfo": "Rechtliche Informationen",
     "legalDetails": "Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV: Ferienhaus Panoramablick"
+  },
+  "ThemeToggle": {
+    "dark": "dunkel",
+    "light": "hell",
+    "label": "Thema wechseln"
   }
 }

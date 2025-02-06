@@ -4,7 +4,16 @@
     "noEmit": true,
     "types": [
       "cypress"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@/app/*": [
+        "./src/app/*"
+      ]
+    }
   },
   "include": [
     "../node_modules/cypress",

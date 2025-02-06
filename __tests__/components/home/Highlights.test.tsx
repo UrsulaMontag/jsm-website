@@ -28,10 +28,10 @@ describe('Highlights', () => {
 
         const features = [
             'Boat',
-            'Garden',
-            'Sauna',
+            'Secluded Garden',
+            'Luxury Sauna',
             'Parking',
-            'Sunset',
+            'Sunset Jetty',
             'Dogs'
         ];
 

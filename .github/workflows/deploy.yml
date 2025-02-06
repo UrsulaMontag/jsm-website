@@ -45,7 +45,7 @@ jobs:
       - name: Run Production Cypress Tests
         if: success()
         env:
-          CYPRESS_BASE_URL: ${{ steps.deploy.outputs.preview-url }} # Use the Vercel deployment URL
+          CYPRESS_BASE_URL: ${{ steps.deploy.outputs.preview-url }}
           NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
           CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
           CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}

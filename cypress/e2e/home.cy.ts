@@ -1,60 +1,132 @@
 describe('Home Page', () => {
     beforeEach(() => {
-        cy.intercept('GET', '/api/fetchImages*').as("fetchImages");
         cy.visit('/');
+        cy.wait(1000);
     });
 
-    it('renders the header', () => {
-        cy.get('header[role="banner"]').should('be.visible');
-    });
+    it('renders hero section with correct content', () => {
+        cy.get('section[data-testid="hero"]').within(() => {
+            cy.get('img[data-testid="hero-image"]')
+                .should('be.visible')
+                .and('have.attr', 'alt', 'Hero image of sunset over Steinhuder Meer');
 
-    it('renders the hero image', () => {
-        cy.get('img[alt="Hero image of sunset over Steinhuder Meer"]').should('be.visible');
-    });
+            cy.get('h1')
+                .should('be.visible')
+                .and('contain', 'Ferienhaus Panoramablick Steinhuder Meer');
 
-    it('fetches and displays images', () => {
-        cy.wait('@fetchImages').then((interception: Cypress.RouteOptions) => {
-            expect(interception.response!.statusCode).to.be.oneOf([200, 304]);
+            cy.get('a[data-testid="cta-button"]')
+                .should('be.visible')
+                .and('have.attr', 'href')
+                .and('include', 'novasol.de');
         });
-        cy.get('img').should('have.length.greaterThan', 0);
     });
 
-    it('has accessible hero section', () => {
-        cy.get('section[aria-labelledby="hero-heading"]').should('exist');
+    it('renders location highlight section correctly', () => {
+        cy.get('section[aria-labelledby="location-highlight-heading"]').within(() => {
+            // Check heading
+            cy.get('#location-highlight-heading')
+                .should('be.visible')
+                .and('contain', 'Wohnen unmittelbar am See');
+
+            const features = [
+                {title: 'Panoramablick', description: 'Ungestörter Ausblick auf den See'},
+                {title: 'Privater Wasserzugang', description: 'Direkter Zugang zum See'},
+                {title: 'Private Lage', description: 'Genießen Sie Privatsphäre'}
+            ];
+
+            cy.get('h3').should('have.length', 3);
+
+            features.forEach(({title}) => {
+                cy.contains('h3', title).should('be.visible');
+            });
+
+            cy.get('img')
+                .should('have.length.at.least', 3)
+                .each($img => {
+                    cy.wrap($img)
+                        .should('be.visible')
+                        .and('have.attr', 'alt');
+                });
+        });
     });
 
-    it('renders the about house section with images and CTA button', () => {
-        cy.get('section[aria-labelledby="about-house-heading"]').should('exist');
-        cy.get('h2#about-house-heading').should('contain.text', 'Entdecken Sie Panoramablick');
-        cy.get('p[aria-label="Erleben Sie Ruhe, Privatsphäre und Luxus im Ferienhaus Panoramablick, mit Annehmlichkeiten wie einem privaten Steg, einer Sauna und einem abgeschiedenen Garten."]').should('exist');
-        cy.get('div[data-testid="about-house-image"]').should('have.length', 3);
-        cy.get('a[aria-label="Explore the house gallery"]').should('exist');
+
+    it('renders activities section with carousel', () => {
+        cy.get('section[aria-labelledby="activities-heading"]').within(() => {
+            cy.get('#activities-heading')
+                .should('be.visible')
+                .and('contain', 'Erleben Sie das Steinhuder Meer');
+
+            // Test carousel navigation
+            cy.get('button[aria-label="Next slide"]')
+                .should('be.visible')
+                .click();
+
+            cy.get('button[aria-label="Previous slide"]')
+                .should('be.visible')
+                .click();
+
+            cy.get('[role="group"]').should('exist');
+        });
     });
 
-    it('renders the highlights section with icons and labels', () => {
-        cy.get('section[aria-labelledby="highlights-heading"]').should('exist');
-        cy.get('h2#highlights-heading').should('contain.text', 'Warum Panoramablick?');
+    it('renders highlights section with features', () => {
+        cy.get('section[aria-labelledby="highlights-heading"]').within(() => {
+            cy.get('#highlights-heading')
+                .should('be.visible')
+                .and('contain', 'Warum Panoramablick?');
 
-        const features = [
-            'Ruderboot',
-            'Garten',
-            'Sauna',
-            'Parken',
-            'Sonnenuntergänge',
-            'Hunde'
+            const features = [
+                'Ruderboot',
+                'Garten',
+                'Sauna',
+                'Parken',
+                'Sonnenuntergänge',
+                'Hunde'
+            ];
+
+            features.forEach(feature => {
+                cy.get('p').contains(new RegExp(feature, 'i'))
+                    .should('be.visible');
+            });
+        });
+    });
+
+    it('renders about house section with gallery preview', () => {
+        cy.get('section[aria-labelledby="about-house-heading"]').within(() => {
+            cy.get('#about-house-heading')
+                .should('be.visible')
+                .and('contain', 'Entdecken Sie Panoramablick');
+
+            cy.get('[data-testid="about-house-image"]')
+                .should('have.length', 3)
+                .find('img')
+                .should('have.attr', 'alt', 'Panoramablick house view');
+
+            cy.get('a[aria-label="Explore the house gallery"]')
+                .should('be.visible');
+        });
+    });
+
+    it('maintains proper section order', () => {
+        const sections = [
+            'section[data-testid="hero"]',
+            'section[aria-labelledby="location-highlight-heading"]',
+            'section[aria-labelledby="about-house-heading"]',
+            'section[aria-labelledby="highlights-heading"]',
+            'section[aria-labelledby="activities-heading"]'
         ];
 
-        features.forEach(feature => {
-            cy.log(`Checking for feature: ${feature}`);
-            cy.get('p').contains(new RegExp(feature, 'i')).should('exist');
+        sections.forEach((section, index) => {
+            if (index === 0) return;
+
+            cy.get(sections[index - 1]).then(($prevSection: JQuery<HTMLElement>) => {
+                cy.get(section).then(($currentSection: JQuery<HTMLElement>) => {
+                    const prevBottom = $prevSection[0].getBoundingClientRect().bottom;
+                    const currentTop = $currentSection[0].getBoundingClientRect().top;
+                    expect(prevBottom).to.be.lessThan(currentTop);
+                });
+            });
         });
     });
-
-    it('renders the footer', () => {
-        cy.get('footer').should('be.visible');
-    });
-
 });
-
-const asModule = {};
-export default asModule;
