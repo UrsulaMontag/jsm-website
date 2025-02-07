@@ -1,19 +1,22 @@
-import { getMessages } from 'next-intl/server';
-import { Locale, routing } from '@/i18n/routing';
-import type { Metadata } from 'next';
+import {getMessages} from 'next-intl/server';
+import {Locale, routing} from '@/i18n/routing';
+import type {Metadata} from 'next';
 
-export async function getLayoutProps ( params: { locale: Locale; } )
-{
-    const locale = routing.locales.includes( params.locale ) ? params.locale : undefined;
+export async function getLayoutProps(params: { locale: Locale; }) {
+    const locale = routing.locales.includes(params.locale) ? params.locale : undefined;
 
-    if ( !locale )
-    {
-        return { locale: undefined, messages: null };
+    if (!locale) {
+        console.warn(`Locale not found: ${params.locale}`);
+        return {locale: 'de', messages: await getMessages({locale: 'de'})};
     }
 
-    const messages = await getMessages( { locale } );
+    const messages = await getMessages({locale});
+    if (!messages) {
+        console.warn(`Messages not found for locale: ${locale}`);
+        return {locale: 'de', messages: await getMessages({locale: 'de'})}; // Fallback
+    }
 
-    return { locale, messages };
+    return {locale, messages};
 }
 
 export const metadata: Metadata = {
@@ -27,7 +30,7 @@ export const metadata: Metadata = {
         "Lütjen-Deile-39",
         "accessible accommodation",
     ],
-    authors: [ { name: "U. Montag", url: "https://example.com" } ],
+    authors: [{name: "U. Montag", url: "https://example.com"}],
     openGraph: {
         title: "Lütjen-Deile-39 | Steinhuder Meer Holiday Home",
         description: "Enjoy the tranquility of Lütjen-Deile-39, located at the stunning Steinhuder Meer. A perfect blend of comfort and nature awaits.",
