@@ -14,7 +14,6 @@ type ActivityProps = {
 };
 export default function Activities({images}: Readonly<ActivityProps>) {
     const t = useTranslations('HomePage.activities');
-
     const sliderSettings = {
         dots: true,
         infinite: true,
@@ -119,15 +118,13 @@ export default function Activities({images}: Readonly<ActivityProps>) {
                     <div className="lg:order-2">
                         {images && images.length > 0 && (
                             <Slider {...sliderSettings}>
-                                {activities.map((activity, index) => (
-                                    <details key={activity.title}
-                                             role="group"
-                                             aria-roledescription="slide"
-                                             aria-label={activity.title}
-                                             className="relative h-80"
-                                             style={{
-                                                 height: index % 3 === 0 ? '300px' : '150px',
-                                             }}>
+                                {activities.map((activity) => (
+                                    <div key={activity.title}
+                                         role="group"
+                                         aria-roledescription="slide"
+                                         aria-label={activity.title}
+                                         className={`relative h-80`}
+                                    >
                                         <Image
                                             loader={cloudinaryLoader}
                                             src={activity.image.public_id}
@@ -146,7 +143,7 @@ export default function Activities({images}: Readonly<ActivityProps>) {
                                         <Link href={activity.pageLink}
                                               className="absolute inset-0 z-10"
                                               aria-label={activity.title}/>
-                                    </details>
+                                    </div>
                                 ))}
                             </Slider>
                         )}

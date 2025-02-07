@@ -23,7 +23,6 @@ describe('Home Page', () => {
 
     it('renders location highlight section correctly', () => {
         cy.get('section[aria-labelledby="location-highlight-heading"]').within(() => {
-            // Check heading
             cy.get('#location-highlight-heading')
                 .should('be.visible')
                 .and('contain', 'Wohnen unmittelbar am See');
@@ -57,12 +56,11 @@ describe('Home Page', () => {
                 .should('be.visible')
                 .and('contain', 'Erleben Sie das Steinhuder Meer');
 
-            // Test carousel navigation
-            cy.get('button[aria-label="Next slide"]')
+            cy.get('button[data-testid="next-arrow"]')
                 .should('be.visible')
                 .click();
 
-            cy.get('button[aria-label="Previous slide"]')
+            cy.get('button[data-testid="prev-arrow"]')
                 .should('be.visible')
                 .click();
 
