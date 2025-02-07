@@ -3,6 +3,31 @@ import {act, render, screen, within} from '@testing-library/react';
 import Activities from '@/app/components/home/Activities';
 import {NextIntlClientProvider} from 'next-intl';
 import messages from '../../../messages/en.json';
+import {Children, ReactNode} from "react";
+
+type SliderProps = {
+    children: ReactNode;
+    prevArrow?: ReactNode;
+    nextArrow?: ReactNode;
+};
+
+// eslint-disable-next-line react/display-name
+jest.mock('react-slick', () => ({children, prevArrow, nextArrow}: Readonly<SliderProps>) => {
+    return (
+        <div data-testid="mock-slider">
+            {prevArrow}
+            {nextArrow}
+            {children}
+            <ul role="list" className="slick-dots">
+                {Children.map(children, (_, index) => (
+                    <li key={index} role="listitem" className={index === 0 ? 'slick-active' : ''}>
+                        <button>{index + 1}</button>
+                    </li>
+                ))}
+            </ul>
+        </div>) // Render children as slides
+});
+
 
 const mockImages = [
     {
@@ -81,8 +106,8 @@ describe('Activities Component', () => {
     it('handles navigation controls correctly', async () => {
         renderComponent();
 
-        const prevButton = screen.getByText(/previous/i);
-        const nextButton = screen.getByLabelText(/next/i);
+        const prevButton = screen.getByTestId('prev-arrow');
+        const nextButton = screen.getByTestId('next-arrow');
 
         expect(prevButton).toBeInTheDocument();
         expect(nextButton).toBeInTheDocument();

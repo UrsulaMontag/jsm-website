@@ -15,8 +15,8 @@ describe('Critical User Paths', () => {
                 .and('have.attr', 'href')
                 .and('include', 'novasol.de');
 
-            cy.get('button[aria-label="Next slide"]').click();
-            cy.get('button[aria-label="Previous slide"]').click();
+            cy.get('button[data-testid="next-arrow"]').click();
+            cy.get('button[data-testid="prev-arrow"]').click();
 
             cy.get('a[aria-label="Explore the house gallery"]').click();
             cy.url().should('match', /(\/gallery|\/gallerie)$/);

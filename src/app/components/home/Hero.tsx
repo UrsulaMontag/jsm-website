@@ -16,9 +16,9 @@ export default function Hero() {
                 <Image
                     loader={cloudinaryLoader}
                     src={`/Ferienhaus_Steinhude/q5rmzqeq9e5wp1d61tm3`}
-                    fill
+                    fill={true}
                     alt="Hero image of sunset over Steinhuder Meer"
-                    priority
+                    priority={true}
                     fetchPriority={'high'}
                     quality={90}
                     className="object-cover animate-zoom-in-out"

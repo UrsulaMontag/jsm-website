@@ -4,7 +4,7 @@ import {useTranslations} from 'next-intl';
 import Link from 'next/link';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Slider, {CustomArrowProps} from 'react-slick';
+import Slider from 'react-slick';
 import {ImageType} from "@/types/cloudinary";
 import Image from "next/image";
 import {cloudinaryLoader} from "@/lib/cloudinaryLoader";
@@ -14,42 +14,34 @@ type ActivityProps = {
 };
 export default function Activities({images}: Readonly<ActivityProps>) {
     const t = useTranslations('HomePage.activities');
-
-
-    const CustomPrevArrow = ({onClick}: CustomArrowProps) => {
-        return (
-            <button
-                type="button"
-                onClick={onClick}
-                aria-label="Previous slide"
-                className="slick-arrow slick-prev"
-            >
-                Previous
-            </button>
-        );
-    };
-
-    const CustomNextArrow = ({onClick}: CustomArrowProps) => {
-        return (
-            <button
-                type="button"
-                onClick={onClick}
-                aria-label="Next slide"
-                className="slick-arrow slick-next"
-            >
-                Next
-            </button>
-        );
-    };
-
     const sliderSettings = {
         dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        prevArrow: <CustomPrevArrow/>,
-        nextArrow: <CustomNextArrow/>,
+        prevArrow: (
+            <div>
+                <button className="next-slick-arrow rotate-180" data-testid="prev-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" stroke="black" height="24" viewBox="0 -960 960 960"
+                         width="24">
+                        <path
+                            d="m242-200 200-280-200-280h98l200 280-200 280h-98Zm238 0 200-280-200-280h98l200 280-200 280h-98Z"/>
+                    </svg>
+                </button>
+            </div>
+        ),
+        nextArrow: (
+            <div>
+                <button className="next-slick-arrow" data-testid="next-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" stroke="black" height="24" viewBox="0 -960 960 960"
+                         width="24">
+                        <path
+                            d="m242-200 200-280-200-280h98l200 280-200 280h-98Zm238 0 200-280-200-280h98l200 280-200 280h-98Z"/>
+                    </svg>
+                </button>
+            </div>
+        ),
     };
 
     const defaultImage: ImageType = {
@@ -126,15 +118,13 @@ export default function Activities({images}: Readonly<ActivityProps>) {
                     <div className="lg:order-2">
                         {images && images.length > 0 && (
                             <Slider {...sliderSettings}>
-                                {activities.map((activity, index) => (
+                                {activities.map((activity) => (
                                     <div key={activity.title}
                                          role="group"
                                          aria-roledescription="slide"
                                          aria-label={activity.title}
-                                         className="relative h-80"
-                                         style={{
-                                             height: index % 3 === 0 ? '300px' : '150px',
-                                         }}>
+                                         className={`relative h-80`}
+                                    >
                                         <Image
                                             loader={cloudinaryLoader}
                                             src={activity.image.public_id}

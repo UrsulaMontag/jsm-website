@@ -56,7 +56,7 @@ export default function AboutHouse({images}: Readonly<AboutHouseProps>) {
                                 <Image
                                     loader={cloudinaryLoader}
                                     src={image.public_id}
-                                    fill
+                                    fill={true}
                                     alt="Panoramablick house view"
                                     className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
                                 />

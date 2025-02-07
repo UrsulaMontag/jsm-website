@@ -76,19 +76,21 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-[800px]">
                     {/* Main Panorama */}
                     <div
+                        role="button"
                         className="md:col-span-8 h-full relative group overflow-hidden rounded-2xl shadow-2xl cursor-zoom-in"
                         onClick={(e) => {
                             e.stopPropagation();
                             setSelectedImage(images[0]);
-                        }}>
+                        }}
+                    >
                         <Image
                             loader={cloudinaryLoader}
                             src={images[0]?.public_id || 'default/fallback_image'}
-                            fill
+                            fill={true}
                             alt={images[0]?.alt || 'Lakeside view'}
                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                             sizes="(max-width: 768px) 100vw, 75vw"
-                            priority
+                            priority={true}
                         />
                         <div
                             className="absolute inset-0 bg-gradient-to-t from-lake-blue/30 to-transparent dark:from-dark-bg/40"/>
@@ -98,6 +100,7 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
                     <div className="md:col-span-4 grid grid-rows-2 gap-6 h-full">
                         {images.slice(1, 3).map((image) => (
                             <div
+                                role="button"
                                 key={image.public_id}
                                 className="relative group overflow-hidden rounded-2xl shadow-2xl cursor-zoom-in"
                                 onClick={(e) => {
@@ -108,7 +111,7 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
                                 <Image
                                     loader={cloudinaryLoader}
                                     src={image.public_id}
-                                    fill
+                                    fill={true}
                                     alt={image.alt}
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                                     sizes="(max-width: 768px) 100vw, 25vw"
@@ -165,9 +168,9 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
                                     loader={cloudinaryLoader}
                                     src={selectedImage.public_id}
                                     alt={selectedImage.alt}
-                                    fill
+                                    fill={true}
                                     className="object-contain"
-                                    priority
+                                    priority={true}
                                 />
 
                                 {/* Close Button */}

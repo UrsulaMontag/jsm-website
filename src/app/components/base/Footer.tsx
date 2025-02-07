@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import {useTranslations} from 'next-intl';
-import ThemeToggle from "@/app/helper/ThemeToggle";
+import ThemeToggle from "@/app/components/base/ThemeToggle";
 
 export default function Footer() {
     const t = useTranslations('Footer');

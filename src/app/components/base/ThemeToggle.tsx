@@ -1,6 +1,6 @@
 'use client';
 
-import {useTheme} from "@/app/helper/ThemeProvider";
+import {useTheme} from "@/app/components/base/ThemeProvider";
 import {useTranslations} from "next-intl";
 
 const ThemeToggle = () => {
@@ -19,7 +19,6 @@ const ThemeToggle = () => {
                 <input
                     data-testid="theme-toggle-input"
                     type="checkbox"
-                    aria-hidden="true"
                     style={{display: 'none'}}
                     checked={isDarkMode}
                     onChange={toggleDarkMode}
