@@ -75,8 +75,7 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
                 {/* Staggered Image Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-[800px]">
                     {/* Main Panorama */}
-                    <div
-                        role="button"
+                    <button
                         className="md:col-span-8 h-full relative group overflow-hidden rounded-2xl shadow-2xl cursor-zoom-in"
                         onClick={(e) => {
                             e.stopPropagation();
@@ -94,13 +93,12 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
                         />
                         <div
                             className="absolute inset-0 bg-gradient-to-t from-lake-blue/30 to-transparent dark:from-dark-bg/40"/>
-                    </div>
+                    </button>
 
                     {/* Secondary Images Stack */}
                     <div className="md:col-span-4 grid grid-rows-2 gap-6 h-full">
                         {images.slice(1, 3).map((image) => (
-                            <div
-                                role="button"
+                            <button
                                 key={image.public_id}
                                 className="relative group overflow-hidden rounded-2xl shadow-2xl cursor-zoom-in"
                                 onClick={(e) => {
@@ -118,7 +116,7 @@ export default function LocationHighlight({images}: Readonly<LocationHighlightPr
                                 />
                                 <div
                                     className="absolute inset-0 bg-gradient-to-t from-lake-blue/30 to-transparent dark:from-dark-bg/40"/>
-                            </div>
+                            </button>
                         ))}
                     </div>
                 </div>
