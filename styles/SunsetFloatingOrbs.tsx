@@ -27,7 +27,6 @@ const SunsetFloatingOrbs = () => {
     const orbsRef = useRef<HTMLElement[]>([]);
     const positions = useRef<Array<{ top: string; left: string }>>([]);
 
-    // Initialize random positions once on client mount
     useEffect(() => {
         setIsClient(true);
         positions.current = Array.from({length: 10}, () => ({
