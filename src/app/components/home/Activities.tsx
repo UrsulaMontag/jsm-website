@@ -8,6 +8,7 @@ import Slider from 'react-slick';
 import {ImageType} from "@/types/cloudinary";
 import Image from "next/image";
 import {cloudinaryLoader} from "@/lib/cloudinaryLoader";
+import SlickButtonFix from "@/app/helper/SlickButtonFix";
 
 type ActivityProps = {
     images: ImageType[] | undefined;
@@ -21,26 +22,22 @@ export default function Activities({images}: Readonly<ActivityProps>) {
         slidesToShow: 1,
         slidesToScroll: 1,
         prevArrow: (
-            <div>
-                <button className="next-slick-arrow rotate-180" data-testid="prev-arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" stroke="black" height="24" viewBox="0 -960 960 960"
-                         width="24">
-                        <path
-                            d="m242-200 200-280-200-280h98l200 280-200 280h-98Zm238 0 200-280-200-280h98l200 280-200 280h-98Z"/>
-                    </svg>
-                </button>
-            </div>
+            <SlickButtonFix currentSlide={0} slideCount={5} props={{className: 'slick-prev'}} data-testid="prev-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" stroke="black" height="24" viewBox="0 -960 960 960"
+                     width="24" aria-label="previous-arrow">
+                    <path
+                        d="m242-200 200-280-200-280h98l200 280-200 280h-98Zm238 0 200-280-200-280h98l200 280-200 280h-98Z"/>
+                </svg>
+            </SlickButtonFix>
         ),
         nextArrow: (
-            <div>
-                <button className="next-slick-arrow" data-testid="next-arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" stroke="black" height="24" viewBox="0 -960 960 960"
-                         width="24">
-                        <path
-                            d="m242-200 200-280-200-280h98l200 280-200 280h-98Zm238 0 200-280-200-280h98l200 280-200 280h-98Z"/>
-                    </svg>
-                </button>
-            </div>
+            <SlickButtonFix currentSlide={0} slideCount={5} props={{className: 'slick-next'}} data-testid="next-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" stroke="black" height="24" viewBox="0 -960 960 960"
+                     width="24" aria-label="next-arrow">
+                    <path
+                        d="m242-200 200-280-200-280h98l200 280-200 280h-98Zm238 0 200-280-200-280h98l200 280-200 280h-98Z"/>
+                </svg>
+            </SlickButtonFix>
         ),
     };
 

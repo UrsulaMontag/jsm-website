@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
         loader: 'cloudinary',
         path: 'https://res.cloudinary.com/montagu666/image/upload/',
     },
+   
 };
 
 export default withNextIntl(nextConfig);
