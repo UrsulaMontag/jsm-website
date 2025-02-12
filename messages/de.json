@@ -147,7 +147,7 @@
   "ErrorPage": {
     "title": "Seite nicht gefunden",
     "description": "Die von Ihnen gesuchte Seite existiert nicht oder ist noch in der Entwicklung.",
-    "comingSoon": "Bald verfügbar",
+    "comingSoon": "Diese Seite ist bald verfügbar.",
     "backToHome": "Zurück zur Startseite"
   }
 }
