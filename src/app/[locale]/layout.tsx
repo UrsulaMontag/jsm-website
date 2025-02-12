@@ -1,5 +1,5 @@
 import "../globals.css";
-import {Locale} from "@/i18n/routing";
+import {Locale, routing} from "@/i18n/routing";
 import {NextIntlClientProvider} from "next-intl";
 import {ReactNode} from "react";
 import {getLayoutProps, metadata, viewport} from "./rootLayoutProps";
@@ -9,6 +9,7 @@ import {body} from "../../../styles/fonts";
 import Header from "@/app/components/base/header/Header";
 import Footer from "@/app/components/base/Footer";
 import SunsetFloatingOrbs from "../../../styles/SunsetFloatingOrbs";
+import {notFound} from "next/navigation";
 
 type LayoutProps = {
     children: ReactNode;
@@ -23,6 +24,10 @@ export default async function RootLayout({
 
     const resolvedParams = await params;
     const {locale, messages} = await getLayoutProps(resolvedParams);
+
+    if (!routing.locales.includes(locale as Locale)) {
+        notFound();
+    }
 
     return (
         <ThemeProvider>

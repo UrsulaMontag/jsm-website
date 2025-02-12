@@ -3,7 +3,6 @@ import '@testing-library/jest-dom';
 import NotFound from "@/app/[locale]/not-found";
 import {NextIntlClientProvider} from "next-intl";
 
-// Mock translations for testing
 const messages = {
     ErrorPage: {
         title: 'Page Not Found',
