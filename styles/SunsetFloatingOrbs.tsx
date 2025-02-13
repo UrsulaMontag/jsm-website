@@ -23,11 +23,9 @@ const useAnimationFrame = (callback: (delta: number) => void) => {
 };
 
 const SunsetFloatingOrbs = () => {
-    const [isClient, setIsClient] = useState(false);
     const orbsRef = useRef<HTMLElement[]>([]);
     const [positions, setPositions] = useState<Array<{ top: string; left: string }>>([]);
     useEffect(() => {
-        setIsClient(true);
         const randomPositions = Array.from({length: 10}, () => ({
             top: `${Math.random() * 100}vh`,
             left: `${Math.random() * 100}vw`
@@ -47,7 +45,6 @@ const SunsetFloatingOrbs = () => {
     // Avoid rendering anything server-side to prevent hydration mismatches
     if (positions.length === 0) return null;
 
-    if (!isClient) return null;
 
     return (
         <div
@@ -64,6 +61,7 @@ const SunsetFloatingOrbs = () => {
                             delete orbsRef.current[index];
                         }
                     }}
+                    suppressHydrationWarning={true}
                     className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-sunset-orange to-amber-glow opacity-30 blur-lg"
                     style={{
                         top: pos.top,   // values are generated on the client side only
