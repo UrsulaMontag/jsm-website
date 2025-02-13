@@ -15,8 +15,6 @@ export default async function RootLayout({children, params}: Readonly<LayoutProp
     const messages = await getMessages({locale: params.locale});
 
     return (
-        <html lang={params.locale}>
-        <body>
         <NextIntlClientProvider
             locale={params.locale}
             // Make sure to provide at least the messages for `Error`
@@ -24,7 +22,5 @@ export default async function RootLayout({children, params}: Readonly<LayoutProp
         >
             {children}
         </NextIntlClientProvider>
-        </body>
-        </html>
     );
 }
