@@ -20,7 +20,7 @@ export {metadata, viewport};
 
 export default async function RootLayout({
                                              children, params,
-                                         }: LayoutProps) {
+                                         }: Readonly<LayoutProps>) {
 
     const resolvedParams = await params;
     const {locale, messages} = await getLayoutProps(resolvedParams);
@@ -31,7 +31,7 @@ export default async function RootLayout({
 
     return (
         <ThemeProvider>
-            <html lang={locale as string || 'de'}>
+            <html lang={locale || 'de'}>
             <body
                 className={`${body.className} min-h-screen bg-sunset-gradient dark:bg-sunset-gradient-dark transition-colors duration-300 antialiased`}>
             <SunsetFloatingOrbs/>

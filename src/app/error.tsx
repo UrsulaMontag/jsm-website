@@ -6,7 +6,7 @@ type ErrorProps = {
     error: Error;
     reset: () => void;
 };
-export default function Error({error, reset}: Readonly<ErrorProps>) {
+export default function CustomError({error, reset}: Readonly<ErrorProps>) {
     const t = useTranslations('Error');
 
     return (

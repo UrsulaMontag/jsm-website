@@ -12,7 +12,7 @@ type LayoutProps = {
     children: ReactNode;
     params: Promise<{ locale: Locale; }>;
 };
-export default async function RootLayout({children, params}: LayoutProps) {
+export default async function RootLayout({children, params}: Readonly<LayoutProps>) {
     const messages = await getMessages();
     const resolvedParams = await params;
     const {locale} = await getLayoutProps(resolvedParams);
