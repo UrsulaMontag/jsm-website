@@ -16,6 +16,7 @@ export default function LocaleSwitcherSelect({children, defaultValue, label}: Re
 
     const onSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const nextLocale = event.target.value as Locale;
+        document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; SameSite=Lax`;
         startTransition(() => {
             router.replace(
                 // @ts-expect-error -- TypeScript will validate that only known `params`

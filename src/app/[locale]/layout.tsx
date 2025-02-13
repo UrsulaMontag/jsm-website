@@ -8,12 +8,14 @@ import ThemeWrapper from '../components/base/ThemeWrapper';
 import {body} from "../../../styles/fonts";
 import Header from "@/app/components/base/header/Header";
 import Footer from "@/app/components/base/Footer";
-import SunsetFloatingOrbs from "../../../styles/SunsetFloatingOrbs";
 import {notFound} from "next/navigation";
+import ClientSunsetOrbs from "../../../styles/ClientSunsetOrbs";
+import {pick} from "lodash";
+
 
 type LayoutProps = {
     children: ReactNode;
-    params: Promise<{ locale: Locale; }>;
+    params: { locale: Locale; };
 };
 
 export {metadata, viewport};
@@ -22,21 +24,22 @@ export default async function RootLayout({
                                              children, params,
                                          }: Readonly<LayoutProps>) {
 
-    const resolvedParams = await params;
-    const {locale, messages} = await getLayoutProps(resolvedParams);
+    const {locale, messages} = await getLayoutProps(params);
 
     if (!routing.locales.includes(locale as Locale)) {
         notFound();
     }
 
+
     return (
         <ThemeProvider>
-            <html lang={locale || 'de'}>
+            <html lang={locale}>
             <body
-                className={`${body.className} min-h-screen bg-sunset-gradient dark:bg-sunset-gradient-dark transition-colors duration-300 antialiased`}>
-            <SunsetFloatingOrbs/>
+                className={`min-h-screen bg-sunset-gradient dark:bg-sunset-gradient-dark transition-colors duration-300 antialiased ${body.className}`}>
+            <ClientSunsetOrbs/>
             <ThemeWrapper>
-                <NextIntlClientProvider messages={messages || undefined}>
+                <NextIntlClientProvider locale={locale}
+                                        messages={pick(messages, ['Error', 'Header', 'Footer', 'HomePage', `LanguageSwitcher`, `ThemeToggle`])}>
                     <div className="flex flex-col min-h-screen w-full"
                          data-testid="intl-provider">
                         <Header/>

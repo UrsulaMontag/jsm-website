@@ -3,20 +3,19 @@ import {Locale, routing} from '@/i18n/routing';
 import type {Metadata} from 'next';
 
 export async function getLayoutProps(params: { locale: Locale; }) {
-    const locale = routing.locales.includes(params.locale) ? params.locale : undefined;
+    const cookies = await import('next/headers').then(m => m.cookies());
+    const cookieLocale = cookies.get('NEXT_LOCALE')?.value as Locale | undefined;
 
-    if (!locale) {
-        console.warn(`Locale not found: ${params.locale}`);
-        return {locale: 'de', messages: await getMessages({locale: 'de'})};
-    }
+    const validLocale = cookieLocale && routing.locales.includes(cookieLocale)
+        ? cookieLocale
+        : routing.locales.includes(params.locale)
+            ? params.locale
+            : 'de';
 
-    const messages = await getMessages({locale});
-    if (!messages) {
-        console.warn(`Messages not found for locale: ${locale}`);
-        return {locale: 'de', messages: await getMessages({locale: 'de'})}; // Fallback
-    }
-
-    return {locale, messages};
+    return {
+        locale: validLocale,
+        messages: await getMessages({locale: validLocale})
+    };
 }
 
 export const metadata: Metadata = {
