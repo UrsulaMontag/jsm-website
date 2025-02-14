@@ -22,7 +22,7 @@ export {metadata, viewport};
 
 export default async function RootLayout({
                                              children, params,
-                                         }: Readonly<LayoutProps>) {
+                                         }: LayoutProps) {
 
     const {locale, messages} = await getLayoutProps(params);
 
