@@ -1,18 +1,21 @@
 'use client';
 
-import {useTranslations} from 'next-intl';
+import CustomError from '@/app/components/CustomError';
+import {useParams} from "next/navigation";
+import {Locale} from "@/i18n/routing";
 
 type ErrorProps = {
     error: Error;
     reset: () => void;
 };
-export default function Error({error, reset}: Readonly<ErrorProps>) {
-    const t = useTranslations('Error');
+export default function Error({
+                                  error,
+                                  reset,
+                              }: Readonly<ErrorProps>) {
+    const params = useParams();
+    const locale = params.locale as Locale;
 
     return (
-        <div>
-            <h1>{t('title') + error}</h1>
-            <button onClick={reset}>{t('retry')}</button>
-        </div>
+        <CustomError error={error} resetAction={reset} locale={locale}/>
     );
 }

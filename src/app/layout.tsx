@@ -5,8 +5,8 @@ import {ReactNode} from "react";
 import {NextIntlClientProvider} from "next-intl";
 import {getMessages} from "next-intl/server";
 import {Locale} from "@/i18n/routing";
-import {getLayoutProps} from "@/app/[locale]/rootLayoutProps";
 import {pick} from "lodash";
+import {getLayoutProps} from "@/app/[locale]/rootLayoutProps";
 
 type LayoutProps = {
     children: ReactNode;
@@ -17,8 +17,6 @@ export default async function RootLayout({children, params}: LayoutProps) {
     const resolvedParams = await params;
     const {locale} = await getLayoutProps(resolvedParams);
     return (
-        <html lang={locale}>
-        <body>
         <NextIntlClientProvider
             locale={locale}
             // Make sure to provide at least the messages for `Error`
@@ -26,7 +24,5 @@ export default async function RootLayout({children, params}: LayoutProps) {
         >
             {children}
         </NextIntlClientProvider>
-        </body>
-        </html>
     );
 }
