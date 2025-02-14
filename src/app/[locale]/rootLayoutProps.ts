@@ -6,11 +6,14 @@ export async function getLayoutProps(params: { locale: Locale; }) {
     const cookies = await import('next/headers').then(m => m.cookies());
     const cookieLocale = cookies.get('NEXT_LOCALE')?.value as Locale | undefined;
 
-    const validLocale = cookieLocale && routing.locales.includes(cookieLocale)
-        ? cookieLocale
-        : routing.locales.includes(params.locale)
-            ? params.locale
-            : 'de';
+    let validLocale: "en" | "de";
+    if (cookieLocale && routing.locales.includes(cookieLocale)) {
+        validLocale = cookieLocale;
+    } else if (routing.locales.includes(params.locale)) {
+        validLocale = params.locale;
+    } else {
+        validLocale = "de";
+    }
 
     return {
         locale: validLocale,

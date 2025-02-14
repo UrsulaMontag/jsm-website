@@ -26,7 +26,7 @@ export default async function RootLayout({
 
     const {locale, messages} = await getLayoutProps(params);
 
-    if (!routing.locales.includes(locale as Locale)) {
+    if (!routing.locales.includes(locale)) {
         notFound();
     }
 

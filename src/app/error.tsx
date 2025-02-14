@@ -8,10 +8,10 @@ type ErrorProps = {
     error: Error;
     reset: () => void;
 };
-export default function Error({
-                                  error,
-                                  reset,
-                              }: Readonly<ErrorProps>) {
+export default function ClientError({
+                                        error,
+                                        reset,
+                                    }: Readonly<ErrorProps>) {
     const params = useParams();
     const locale = params.locale as Locale;
 
